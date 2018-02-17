@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/01/18/java/jse/java8/Java8-MethodReference/</loc>
+    <lastmod>2018-02-17T16:57:11.972Z</lastmod>
+    <data>
+        <display>
+        <title>Java8 Method Reference</title>
+        <pubTime>2018-01-18T10:49:45.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>java</tag>
+         
+        <tag>jse</tag>
+         
+        <tag>java8</tag>
+         
+        <tag>lambda</tag>
+         
+        <tag>MethodReference</tag>
+         
+        <tag>语法糖</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="java" url="https://ijiangtao.github.io/categories/tech/java/"/>
+          
+             
+              <breadCrumb title="jse" url="https://ijiangtao.github.io/categories/tech/java/jse/"/>
+          
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/01/15/nodejs/NodeJSDataType/</loc>
+    <lastmod>2018-02-17T16:54:45.551Z</lastmod>
+    <data>
+        <display>
+        <title>Node.js核心数据类型简介</title>
+        <pubTime>2018-01-15T10:49:45.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>node</tag>
+         
+        <tag>node.js</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="node.js" url="https://ijiangtao.github.io/categories/tech/node-js/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/02/15/bloginfo/Welcome/</loc>
+    <lastmod>2018-02-17T07:20:23.071Z</lastmod>
+    <data>
+        <display>
+        <title>Hello,Welcome to my blog world</title>
+        <pubTime>2018-02-15T10:49:45.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>google</tag>
+         
+        <tag>gtm</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/</loc>
+    <lastmod>2018-02-17T04:36:25.297Z</lastmod>
+    <data>
+        <display>
+        <title>GTM介绍与使用</title>
+        <pubTime>2018-01-15T10:49:45.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>google</tag>
+         
+        <tag>gtm</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="google" url="https://ijiangtao.github.io/categories/tech/google/"/>
+          
+             
+              <breadCrumb title="gtm" url="https://ijiangtao.github.io/categories/tech/google/gtm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>

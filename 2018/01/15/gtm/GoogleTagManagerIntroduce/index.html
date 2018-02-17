@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tech,google,gtm," />
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="tech,google,gtm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GTM介绍与使用">
+<meta property="og:url" content="https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/index.html">
+<meta property="og:site_name" content="Tao&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-post.png?raw=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/gtm-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/gtm-2.png">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-3.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-4.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E5%90%8D%E7%A7%B0%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AE%B9.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E8%A7%A6%E5%8F%91%E5%99%A8.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E5%8F%91%E5%B8%83.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E7%A4%BA%E4%BE%8B%E6%95%88%E6%9E%9C.png?raw=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/GA%E5%92%8CGTM%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/GA%E4%B8%BB%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/GTM%E4%B8%BB%E9%A1%B5.png?raw=true">
+<meta property="og:updated_time" content="2018-02-17T04:36:25.297Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GTM介绍与使用">
+<meta name="twitter:image" content="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-post.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/"/>
+
+
+
+
+
+  <title>GTM介绍与使用 | Tao's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Tech and daily life.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijiangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">GTM介绍与使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T18:49:45+08:00">
+                2018-01-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-17T12:36:25+08:00">
+                2018-02-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/" itemprop="url" rel="index">
+                    <span itemprop="name">tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/google/" itemprop="url" rel="index">
+                    <span itemprop="name">google</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/google/gtm/" itemprop="url" rel="index">
+                    <span itemprop="name">gtm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/15/gtm/GoogleTagManagerIntroduce/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/01/15/gtm/GoogleTagManagerIntroduce/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-post.png?raw=true" alt="post"></p>
+<a id="more"></a>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#summary">文档概述</a></p>
+<p><a href="#term">名词解释</a></p>
+<p><a href="#adv">优势</a></p>
+<p><a href="#use">使用</a></p>
+<p><a href="#qa">Q&amp;A</a></p>
+<hr>
+<h1 id="文档概述"><a href="#文档概述" class="headerlink" title="文档概述"></a>文档概述</h1><p><a name="summary"><a></a></a></p>
+<p>这篇文档讲解了GTM(Google Tag Manager)相关的名词、概念和用法实例，并结合GA，提供了优势分析和操作实例。</p>
+<p>同时，对于常见的问题和解答做了一一列举。</p>
+<hr>
+<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><p><a name="term"><a></a></a></p>
+<h2 id="代码-Tag"><a href="#代码-Tag" class="headerlink" title="代码(Tag)"></a>代码(Tag)</h2><p>什么是代码？</p>
+<p>代码就是在网页上执行的一段HTML代码。(A Tag is HTML code that executes on a page.)</p>
+<p>而对于GTM,代码指的是向第三方（比如 Google）发送信息的代码段。(A tag is a snippet of code that sends information to a third party, such as Google.)</p>
+<h2 id="触发器-Trigger"><a href="#触发器-Trigger" class="headerlink" title="触发器(Trigger)"></a>触发器(Trigger)</h2><p>在GTM中,触发器简而言之就是可以决定哪些代码能以何种方式触发。</p>
+<h2 id="变量-Variable："><a href="#变量-Variable：" class="headerlink" title="变量 Variable："></a>变量 Variable：</h2><p>在GTM中,变量用于接收和存储数据，被Tag和Trigger使用</p>
+<h2 id="Googel-Tag-Manager-谷歌代码管理器-GTM"><a href="#Googel-Tag-Manager-谷歌代码管理器-GTM" class="headerlink" title="Googel Tag Manager(谷歌代码管理器,GTM)"></a>Googel Tag Manager(谷歌代码管理器,GTM)</h2><p>Google 跟踪代码管理器是一个代码管理系统，可以快速轻松地更新网站或移动应用上的代码和代码段，例如用于流量分析和营销优化的代码和代码段。可以通过跟踪代码管理器的界面添加和更新 AdWords、Google Analytics（分析）、FirebaseAnalytics、Floodlight 和第三方代码或自定义代码，而无需修改网站代码。这样既减少了错误，也免除了配置代码时向开发者求助的麻烦。(Google Tag Manager is a tag management system that allows you to quickly and easily update tags and code snippets on your website or mobile app, such as those intended for traffic analysis and marketing optimization. You can add and update AdWords, Google Analytics, Firebase Analytics, Floodlight, and 3rd party or custom tags from the Tag Manager user interface instead of editing site code. This reduces errors and frees you from having to involve a developer when configuring tags.)</p>
+<h2 id="Google-Analysis-分析，GA"><a href="#Google-Analysis-分析，GA" class="headerlink" title="Google Analysis(分析，GA)"></a>Google Analysis(分析，GA)</h2><p>Google Analytics（分析）可以帮助你衡量销售与转化情况，且能为你提供新鲜的深入信息，帮助你了解访问者如何使用您的网站，他们如何到达您的网站，以及您可以如何吸引他们不断回访。</p>
+<hr>
+<h1 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h1><p><a name="adv"><a></a></a></p>
+<p>为什么要使用GTM? 使用GTM有什么优势？</p>
+<p>简单来说，GTM让你添加js代码到你站点的方式更简单，取代了硬编码的形式，你可以直接通过界面操作去决定什么时候触发和触发哪些页面，还能测试是否触发。</p>
+<p>因此，Google Tag Manager是一个对用户非常优化的方案。能用于管理代码，标签，js代码，能像第三方发送数据，而已通过它给你的站点或app添加AD转跟踪代码，再营销代码，DCM代码等。</p>
+<p>另外，GTM和GA可以结合使用，利用GTM部署GA代码。</p>
+<p>下面总结了GTM的7个优点：</p>
+<ol>
+<li><p>它是免费的<br>无需担心，GTM是免费的，它有甚多令人惊奇的功能，如账户和用户管理，代码触发规则，第三方代码，自定义HTML等。</p>
+</li>
+<li><p>你可以直接使用<br>部署GTM后，你可以再不需要开发支持的情况下直接往页面添加代码，测试，直到你测试无误后直接发布。</p>
+</li>
+<li><p>忘记限制<br>通过google Tag Manager，你可以使用更多的非谷歌的产品，可以部署第三方预定义的代码，如marin，comScore，AdRoll等，如果找不到你想要的第三方代码，你开可以定义。不是可以适用于网站，可以用于ios和Android。</p>
+</li>
+<li><p>无缝与GA结合<br>Google Tag Manager能更好支持Google Anlaytics一些复杂而使用的功能，例如Userid跟踪，Userid跟踪能解决跨设备跟踪的问题，能够提供更加准确的数据。Google Tag Manager也可以更加方便的设置自定义维度，自定义字段，跨站跟踪，增强型电子商务跟踪等。</p>
+</li>
+<li><p>跟踪方便<br>由于网上很多资源，你可以很容易去跟踪如youtube视屏播放，打印跟踪，ajax表单跟踪等。</p>
+</li>
+<li><p>无需关心安全问题<br>无需担心，Google Tag Manager拥有你所需的安全管理功能，你可以给不同的用户授予不同的权限。</p>
+</li>
+<li><p>直接可以debug<br>有debug功能，内置错误检验，版本控制，所以你可以再上线之前知道发生了什么。</p>
+</li>
+</ol>
+<hr>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p><a name="use"><a></a></a></p>
+<h2 id="使用的流程"><a href="#使用的流程" class="headerlink" title="使用的流程"></a>使用的流程</h2><ol>
+<li><p>转至 tagmanager.google.com 并创建一个帐户。</p>
+</li>
+<li><p>在此帐户中为网站创建一个容器。</p>
+</li>
+<li><p>将容器代码段添加到网站。</p>
+</li>
+<li><p>将硬编码代码（如 AdWords 或 DoubleClick 代码）从网站的源代码迁移到跟踪代码管理器中。</p>
+</li>
+</ol>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>下面从创建GTM容器到页面触发嵌入指定代码片段为例，演示GTM的基本使用。</p>
+<p>1 . 创建账号</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/gtm-1.png" alt="创建账号1"></p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/gtm-2.png" alt="创建账号2"></p>
+<p>2 . 安装</p>
+<p>创建账号之后会弹出『Google 跟踪代码管理器服务条款协议』，接受后可以看到『安装 Google 跟踪代码管理器』页面，分别将两段代码放在网站的<head>和</head><body>元素中。</body></p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-3.png?raw=true" alt="创建账号3"></p>
+<p>3 . 配置变量</p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-4.png?raw=true" alt=""></p>
+<p>4 . 配置代码</p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E5%90%8D%E7%A7%B0%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AE%B9.png?raw=true" alt=""></p>
+<p>5 . 配置触发器</p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E8%A7%A6%E5%8F%91%E5%99%A8.png?raw=true" alt=""></p>
+<p>6 . 发布</p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E5%8F%91%E5%B8%83.png?raw=true" alt=""></p>
+<p>7 . 查看效果</p>
+<p>访问[<a href="http://test.mapemall.com/account/wish-list]即可看到指定的代码片段已经嵌入网页中了。" target="_blank" rel="noopener">http://test.mapemall.com/account/wish-list]即可看到指定的代码片段已经嵌入网页中了。</a></p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/gtm-%E7%A4%BA%E4%BE%8B%E6%95%88%E6%9E%9C.png?raw=true" alt=""></p>
+<hr>
+<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><p><a name="qa"><a></a></a></p>
+<h2 id="迁移到GTM需要准备什么？-难度大吗？"><a href="#迁移到GTM需要准备什么？-难度大吗？" class="headerlink" title="迁移到GTM需要准备什么？ 难度大吗？"></a>迁移到GTM需要准备什么？ 难度大吗？</h2><p>为确保 Google 跟踪代码管理器的配置符合您的业务需求，请考虑以下几点:</p>
+<ol>
+<li>需要多少帐号？应该由谁来创建这些帐号？</li>
+</ol>
+<p>首次设置跟踪代码管理器帐号时，可以制定一项策略，用来规定由谁负责长期管理帐号，以及万一团队成员角色变更，帐号所有权将如何处理。</p>
+<p>最好每个公司设置一个跟踪代码管理器帐号,需要管理代码的公司应该在 Google 跟踪代码管理器中创建帐号,代理机构可以登录自己的 Google 帐号来管理客户的 Google 跟踪代码管理器帐号.</p>
+<ol>
+<li>您是移动应用开发者吗？</li>
+</ol>
+<p>为每个移动应用设置一个容器。应用的每个主要新版本都应具备一个新容器。（应用的次要更新可使用相同的容器，因为它们的配置键很可能完全相同或非常相似。</p>
+<ol>
+<li>您要管理多个网域吗？</li>
+</ol>
+<p>通常，您需要为每个网域设置一个容器。不过，如果用户体验和网站上的代码会跨越多个网域，则最好为这些相关的网域设置一个容器。以下是一些注意事项：</p>
+<p>配置（规则、触发器和变量）无法在不同容器间轻松共享，除非使用容器导出和导入功能或 API。如果各个网域之间的代码和触发逻辑相似，则可以使用一个容器，原因是维护多个相似的配置比较费时，还容易引发错误。</p>
+<p>一旦有人发布容器，所有更改均会生效（不论哪个网域）。如果您只需要对一个网域应用更改，而不希望其他网域受到影响，则可以为每个网域使用不同的容器。</p>
+<ol>
+<li>您在网站中部署了什么代码？部署在何处？</li>
+</ol>
+<p>首先是确认已经部署在网站中的所有代码及其部署位置（例如所有页眉或页脚、着陆页、确认页以及对按钮点击的响应等）。</p>
+<p>仔细思考您想要收集的信息并决定是否要部署其他代码。如果您要收集的数据没有在网页上显示，请参阅开发者文档，了解如何将其他数据传递到代码。</p>
+<p>如果您的所有代码都会在网页加载时触发，而且可以通过网址识别这些网页，那么基本的容器实现就可以满足您的需求了。创建 Google 跟踪代码管理器帐号和容器之后，只要将所提供的容器代码段（创建容器时生成）放在网站的每个网页上，紧跟在起始 HTML body 标记后面。要了解容器和容器代码段，请参阅设置和安装。</p>
+<p>如果您的代码触发场景更为复杂，那么您可以采用自定义程度更高的容器实现方案。此类自定义解决方案通常会实现一个数据层，该数据层是一种代码，会帮助 Google 跟踪代码管理器将您网站或应用中的数据传送到您的代码中。您可以通过我们的解决方案指南了解使用数据层的原因和方式，还可以在我们的开发者网站上了解如何设置数据层。</p>
+<h2 id="GA与GTM傻傻分不清楚-GA与GTM是同一个东西吗？他们之间有什么关系？"><a href="#GA与GTM傻傻分不清楚-GA与GTM是同一个东西吗？他们之间有什么关系？" class="headerlink" title="GA与GTM傻傻分不清楚:GA与GTM是同一个东西吗？他们之间有什么关系？"></a>GA与GTM傻傻分不清楚:GA与GTM是同一个东西吗？他们之间有什么关系？</h2><p>相当一段时间里，Google Analytics被用于收集，处理，配置和分析网站或app的数据，而且结果可以在页面直接看到。直到2012年，Google发布新款重磅产品，也就是Google Tag Manager。</p>
+<p>对Google Tag Manager的认识错误在哪里？其中最大的一个误解就是认识Google Tag Manager和Google Analytics是同一个东西，这是错误的，事实上，Google Tag Manager完全是一个独立的工具。</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/gtm/GA%E5%92%8CGTM%E5%AF%B9%E6%AF%94.png" alt="GA与GTM傻傻分不清楚"></p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/GA%E4%B8%BB%E9%A1%B5.png?raw=true" alt=""></p>
+<p><img src="https://github.com/ijiangtao/img/blob/master/job/bz/study/gtm/GTM%E4%B8%BB%E9%A1%B5.png?raw=true" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_gh_f0faed874549_344.jpg" alt="ijiangtao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏支持博主继续写出好作品</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay_340X390_20180217180554.png" alt="ijiangtao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_340X390_20180217180331.png" alt="ijiangtao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ijiangtao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/" title="GTM介绍与使用">https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="external nofollow" target="_blank">Apache 2.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+            <a href="/tags/google/" rel="tag"># google</a>
+          
+            <a href="/tags/gtm/" rel="tag"># gtm</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/15/nodejs/NodeJSDataType/" rel="next" title="Node.js核心数据类型简介">
+                <i class="fa fa-chevron-left"></i> Node.js核心数据类型简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/java/jse/java8/Java8-MethodReference/" rel="prev" title="Java8 Method Reference">
+                Java8 Method Reference <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="ijiangtao" />
+            
+              <p class="site-author-name" itemprop="name">ijiangtao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijiangtao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ijiangtao@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ijiangtao" title="github" target="_blank">github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ijiangtao.github.io/" title="github pages" target="_blank">github pages</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://stackoverflow.com/" title="stackoverflow" target="_blank">stackoverflow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.oschina.net/" title="开源中国" target="_blank">开源中国</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.csdn.net/" title="CSDN" target="_blank">CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://weibo.com/" title="微博" target="_blank">微博</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.facebook.com/" title="脸书" target="_blank">脸书</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://twitter.com/" title="推特" target="_blank">推特</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档概述"><span class="nav-number">2.</span> <span class="nav-text">文档概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词解释"><span class="nav-number">3.</span> <span class="nav-text">名词解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-Tag"><span class="nav-number">3.1.</span> <span class="nav-text">代码(Tag)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器-Trigger"><span class="nav-number">3.2.</span> <span class="nav-text">触发器(Trigger)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量-Variable："><span class="nav-number">3.3.</span> <span class="nav-text">变量 Variable：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Googel-Tag-Manager-谷歌代码管理器-GTM"><span class="nav-number">3.4.</span> <span class="nav-text">Googel Tag Manager(谷歌代码管理器,GTM)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Google-Analysis-分析，GA"><span class="nav-number">3.5.</span> <span class="nav-text">Google Analysis(分析，GA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优势"><span class="nav-number">4.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">5.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用的流程"><span class="nav-number">5.1.</span> <span class="nav-text">使用的流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用示例"><span class="nav-number">5.2.</span> <span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">6.</span> <span class="nav-text">Q&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移到GTM需要准备什么？-难度大吗？"><span class="nav-number">6.1.</span> <span class="nav-text">迁移到GTM需要准备什么？ 难度大吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GA与GTM傻傻分不清楚-GA与GTM是同一个东西吗？他们之间有什么关系？"><span class="nav-number">6.2.</span> <span class="nav-text">GA与GTM傻傻分不清楚:GA与GTM是同一个东西吗？他们之间有什么关系？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by JingtaoLee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">3.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'ijiangtao',
+            repo: 'ijiangtao.github.io.comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '96410bc128db83030c72d845b783c2991a4ff055',
+            
+                client_id: '8c17ed0e3d3a4eb9c7a9'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('100');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 9734,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
