@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<meta name="baidu-site-verification" content="c2mGkG2hGr" />
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="desgin,product,app,HypridApp,NativeApp,WebApp," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述：混合时代在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。 这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务">
+<meta name="keywords" content="desgin,product,app,HypridApp,NativeApp,WebApp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动应用开发：Web App模式 、Native App模式及Hyprid App模式">
+<meta property="og:url" content="https://ijiangtao.github.io/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/index.html">
+<meta property="og:site_name" content="Tao&#39;s Blog">
+<meta property="og:description" content="概述：混合时代在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。 这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebApp-HybridApp-NativeApp-907f2ff9d9f3a8c202d3dd210a10c8b3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebAppLimits-22c5ec51749b68d26f83fd67334713b9.png">
+<meta property="og:updated_time" content="2018-02-27T15:52:04.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动应用开发：Web App模式 、Native App模式及Hyprid App模式">
+<meta name="twitter:description" content="概述：混合时代在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。 这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebApp-HybridApp-NativeApp-907f2ff9d9f3a8c202d3dd210a10c8b3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijiangtao.github.io/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/"/>
+
+
+
+
+
+  <title>移动应用开发：Web App模式 、Native App模式及Hyprid App模式 | Tao's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Tech and daily life.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijiangtao.github.io/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijiangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">移动应用开发：Web App模式 、Native App模式及Hyprid App模式</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T23:29:39+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-27T23:52:04+08:00">
+                2018-02-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design/" itemprop="url" rel="index">
+                    <span itemprop="name">design</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design/product/" itemprop="url" rel="index">
+                    <span itemprop="name">product</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design/product/app/" itemprop="url" rel="index">
+                    <span itemprop="name">app</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/" itemprop="commentsCount"></span> 条评论
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,513 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述：混合时代"><a href="#概述：混合时代" class="headerlink" title="概述：混合时代"></a>概述：混合时代</h1><p>在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。</p>
+<p>这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务普及，采用HTML5进行Web App开发正在成为一种趋势，用户可以根据应用特点和需求进行选择，亦可选择两者混合模式（Hyprid App）。</p>
+<p>下面分别对<br><strong>Native App</strong>、<strong>Web App</strong>和<strong>Hybrid App</strong> 进行详细介绍，让你对这几种开发模式有深入的了解。</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebApp-HybridApp-NativeApp-907f2ff9d9f3a8c202d3dd210a10c8b3.png" alt=""></p>
+<a id="more"></a>
+<h2 id="Native-App开发"><a href="#Native-App开发" class="headerlink" title="Native App开发"></a>Native App开发</h2><p>Native App开发即我们所称的传统APP开发模式（原生APP开发模式），该开发针对IOS、Android等不同的手机操作系统要采用不同的语言和框架进行开发，该模式通常是由“云服务器数据+APP应用客户端”两部份构成，APP应用所有的UI元素、数据内容、逻辑框架均安装在手机终端上。</p>
+<p>Native App可以类比Client/Server结构(C/S结构)，也就是是大家熟知的客户机和服务器结构。通过C/S结构也可以充分利用两端硬件环境的优势，将任务合理分配到Client端和Server端来实现，降低了系统的通讯开销。
+　　</p>
+<h2 id="Web-App开发"><a href="#Web-App开发" class="headerlink" title="Web App开发"></a>Web App开发</h2><p>Web App开发即是一种框架型APP开发模式（HTML5  APP 框架开发模式），该开发具有跨平台的优势，该模式通常由“HTML5云网站+APP应用客户端”两部份构成，APP应用客户端只需安装应用的框架部份，而应用的数据则是每次打开APP的时候，去云端取数据呈现给手机用户。</p>
+<p>Web App可以类比大家熟知的B/S结构，将系统功能实现的核心部分集中到服务器上，简化了系统的开发、维护和使用。</p>
+<h2 id="Hybrid-App"><a href="#Hybrid-App" class="headerlink" title="Hybrid App"></a>Hybrid App</h2><p>Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。</p>
+<p>这就像C/S与B/S结合产生的CB/S模式，将B/S与C/S的优势完美地结合起来，应用系统既能以B/S的方式发布运行，同时又具有C/S方式的极强的可操作性。</p>
+<h1 id="Native-APP开与Web-APP开发对比"><a href="#Native-APP开与Web-APP开发对比" class="headerlink" title="Native APP开与Web APP开发对比"></a>Native APP开与Web APP开发对比</h1><h2 id="Web-APP（嵌入型APP）"><a href="#Web-APP（嵌入型APP）" class="headerlink" title="Web APP（嵌入型APP）"></a>Web APP（嵌入型APP）</h2><blockquote>
+<p>Web App 指采用Html5语言写出的App，不需要下载安装。类似于现在所说的轻应用。生存在浏览器中的应用，基本上可以说是触屏版的网页应用。</p>
+</blockquote>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a><strong>组成</strong></h3><ul>
+<li>（1）html5云网站</li>
+<li>（2）APP客户端
+　　</li>
+</ul>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a><strong>适用</strong></h3><pre><code>电子商务、金融、新闻资讯、企业集团需经常更新内容的APP应用。
+</code></pre><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a><strong>特点</strong></h3><p>　　</p>
+<ul>
+<li><p>每次打开APP，都要通过APP框架向云网站取UI及数据；</p>
+</li>
+<li><p>手机用户无法上网则无法访问APP应用中的数据。
+　　</p>
+</li>
+<li><p>框架型的APP无法调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）</p>
+</li>
+<li><p>框架型APP的访问速度受手机终端上网的限制，每次使用均会消耗一定的手机上网流量；
+　　</p>
+</li>
+<li><p>框架型APP应用的安装包小巧，只包含框架文件，而大量的UI元素、数据内容刚存放在云端；</p>
+</li>
+<li><p>APP用户每次都可以访问到实时的最新的云端数据；　</p>
+</li>
+<li><p>APP用户无须频繁更新APP应用，与云端实现的是实时数据交互；</p>
+</li>
+</ul>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>  根据上面的特点，可以总结如下优缺点：</p>
+<p><strong>优点</strong></p>
+<p>（1）开发成本低，</p>
+<p>（2）更新快，</p>
+<p>（3）更新无需通知用户，不需要手动升级</p>
+<p>（4）能够跨多个平台和终端。</p>
+<p><strong>缺点</strong></p>
+<p>（1）临时性的入口</p>
+<p>（2）无法获取系统级别的通知，提醒，动效等等</p>
+<p>（3）用户留存率低</p>
+<p>（4）设计受限制诸多</p>
+<p>（5）体验较差</p>
+<h2 id="Native-App（原生型APP）"><a href="#Native-App（原生型APP）" class="headerlink" title="Native App（原生型APP）"></a>Native App（原生型APP）</h2><blockquote>
+<p>Native APP 指的是原生程序，一般依托于操作系统，有很强的交互，是一个完整的App，可拓展性强。需要用户下载安装使用。</p>
+</blockquote>
+<h3 id="组成-1"><a href="#组成-1" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>云服务器数据中心</li>
+<li>APP客户端</li>
+</ul>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>每次获取最新的APP功能，需要升级APP应用；
+　　</li>
+<li>原生型APP应用的安装包相对较大，包含UI元素、数据内容、逻辑框架；
+　　</li>
+<li>手机用户无法上网也可访问APP应用中以前下载的数据。
+　　</li>
+<li>原生型的APP可以调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）
+　　</li>
+<li>APP应用更新新功能，涉及到每次要向各个应用商店进行提交审核。</li>
+</ul>
+<h3 id="适用-1"><a href="#适用-1" class="headerlink" title="适用"></a>适用</h3><pre><code>游戏、电子杂志、管理应用、物联网等无需经常更新程序框架的APP应用。
+</code></pre><h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>优点</strong></p>
+<p>（1）打造完美的用户体验</p>
+<p>（2）性能稳定</p>
+<p>（3）操作速度快，上手流畅</p>
+<p>（4）访问本地资源（通讯录，相册）</p>
+<p>（5）设计出色的动效，转场，</p>
+<p>（6）拥有系统级别的贴心通知或提醒</p>
+<p>（7）用户留存率高</p>
+<p><strong>缺点</strong></p>
+<p>（1）分发成本高（不同平台有不同的开发语言和界面适配）</p>
+<p>（2）维护成本高（例如一款App已更新至V5版本，但仍有用户在使用V2， V3， V4版本，需要更多的开发人员维护之前的版本）</p>
+<p>（3）更新缓慢，根据不同平台，提交–审核–上线 等等不同的流程，需要经过的流程较复杂</p>
+<p>到底该如何选择Web App和Native App开发模式</p>
+<p>　　移动Web无所不在，移动Web是目前唯一的支持各种设备访问的平台，与桌面Web一样，移动Web支持各种标准的协议。移动Web也是唯一一个可供开发者发布移动应用的平台，它将各种移动交互与桌面任务有效地连接了起来；而开发Native App可以充分利用设备的特性，而这一点往往是Web浏览器做不到的，所以对一个产品本身而言，Native App是最佳的选择。</p>
+<h1 id="两种模式的选择"><a href="#两种模式的选择" class="headerlink" title="两种模式的选择"></a>两种模式的选择</h1><h2 id="什么时候应该选择Native-App"><a href="#什么时候应该选择Native-App" class="headerlink" title="什么时候应该选择Native App"></a>什么时候应该选择Native App</h2><ul>
+<li>为应用收费</li>
+</ul>
+<p>　　没有任何地方规定开发者不能对一个移动Web App收取使用费，但是由于某些原因，人们常常认为不能或是不应该对一个Web App收取费用。由于历史原因，导致移动设备上付费服务遭遇两大阻力：</p>
+<ul>
+<li>开发游戏
+　</li>
+</ul>
+<p>　如果你是想开发一个移动游戏（移动游戏是移动市场上最大的一块），那么你需要开发一个Native App。游戏对资源的占用很大，并且需要使用许多设备API或平台API。虽然，现在有几款完全使用Web技术开发的游戏占有了一定的市场份额，但是和Native App市场的占有情况相比，还是微不足道的。游戏用户对应用的视觉和操作效果要求很高。移动Web虽然提供了一些仿真体验，但还远远不能满足用户的需求。</p>
+<p>　　在开发移动游戏时，你需要慎重考虑你的应用需要支持哪些平台。幸运的是，现在有许多工具能够帮助你将你的游戏推向多个平台，但是完成这些工作，还是需要花费大量的人力和物力。</p>
+<ul>
+<li>使用定位功能</li>
+</ul>
+<p>　　下一个功能就是定位功能，可以通过GPS或者是信号检测确定用户当前的位置信息。以前只能通过Native App的APIs查看用户的位置信息，但现在大多数主流移动浏览器上都嵌入了W3C Geolocation API。像iPhone或Android这样安装了WebKit的设备，或是配置了Opera或Mozilla浏览器的设备，都可以获取用户的位置信息。</p>
+<p>　　<br>　　我相信定位功能会为Web技术带来许多全新的应用。如果能够合理利用Web浏览器，Web开发商就能使用用户的位置信息和其他内容开发出更加有趣的应用。虽然这在技术上没有太大的困难，但却受到隐私保护条例的限制。我们将Web浏览器当做是用户进入World Wide Web的入口。加入定位功能，意味着在网站中引入了一些敏感信息，这有可能导致严重的后果。但是位置感知应用中显示的位置信息必须经过用户的授权，用户当然有权禁止应用发布自己的位置信息。</p>
+<ul>
+<li>使用摄像头</li>
+</ul>
+<p>摄像头可以为你的应用提供丰富的可能性。以往移动MMS（Multimedia Messaging Service）被用于处理移动照片。换言之，你拍了一张照片后，需要使用MMS将它传送给一个服务器，服务器对照片做出相应的处理，并将处理完成的结果通知给你。这个过程是非常耗时的，而且相当复杂，也没有可靠性保障。</p>
+<p>通过访问摄像头，Native App开发者能够简化拍照的过程。用户可以直接在客户端对照片做一些简单的处理，只有在有需要的时候才将照片上传给服务器，而且是通过可靠的HTTP传输。W3C正在开发一个访问摄像头的API，但现在还没有将这部分工作正式整合到浏览器中。
+　　</p>
+<p>在许多类型的移动Apps中，摄像头是非常有用的，比如快拍应用、短片拍摄应用等等，摄像头可以用来捕捉许多重要的瞬间。不久的将来，我们可以看到——只要通过摄像头拍摄某个标识，应用程序就能自动完成对标识上的语言转换工作——这个技术在日本已经开始流行起来了。</p>
+<ul>
+<li>使用感应器
+　</li>
+</ul>
+<p>现在越来越来越多的移动设备上都新增了感应器功能，该装置可以感知设备的物理速度以及重力，并将感知的数据结果传送给设备。这个装置常被用来感应设置是否被翻转，应用根据接受到的信息自动调节画面的方向。</p>
+<p>感应器可以用来帮助用户提升与设备交互时的真实感；大多数移动设备都是手持的，应用能够根据设备的方向调整内容画面，比如翻转屏幕，或是检测物理移动，并能据此猜测用户所处的环境。举一个简单的例子：比如用户正在走路，那么感应器能够检测到一个轻缓的移动或是速度，这时可以为用户提供一个大字体的用户界面，从而使得用户更容易看清屏幕上的内容。</p>
+<p>　<br>然而，开发者也不能过分依赖感应器，因为感应器无法区分究竟哪些交互是有意的，而哪些是没有意义的。每个移动交互都需要通过“传输测试”。设计你的交互时必须考虑用户在一个拥挤的汽车或是火车上的场景。考虑一下如果用户正身处拥挤的地铁或是正在驾车时，你的应用能否正确处理用户摇晃移动设备的动作。通常，大多数开发者都没有考虑这些因素。确保为每个任务设计一个备用方案以处理特殊场景中的移动交互。</p>
+<ul>
+<li>访问文件系统
+　　</li>
+</ul>
+<p>如果你的应用需要将数据保存在本地，那么你需要开发一个Native App。比如你要保存用户的地址簿、电话或E-mail信息，或是保存从其他设备上获取的数据。</p>
+<p>　　访问文件系统常常会涉及到安全和用户隐私保护的问题。恶意应用程序可能会修改或是删除你的移动设备上的数据。一个携带病毒的应用程序可以利用移动设备上的关系网将病毒扩散到许多其他的手机上，在采用移动应用认证机制以前，这种事情是常常发生的。</p>
+<p>　　另一方面，移动设备正变得越来越私人化，移动设备上保存了大量用户的个人信息，以及用户的朋友信息和商业信息。针对这些私人信息开发应用是一个不错的想法。但是这也存在一定的风险，使用保存在移动设备上的数据可以为用户提供更加有针对性的服务。</p>
+<p>　　开发者必须谨记，只有在获得用户的授权后才能访问用户的私人数据。我们看到许多应用在没有得到用户授权的情况下使用了大量的用户私人数据，而被误认为是垃圾信息或是钓鱼应用，即使这些应用原本是在提供一些非常有用的服务。人们对你的应用的误解将会影响到你的服务的推广，如果运营商收到过多关于你的应用的投诉，那么你的服务可能将被终止，甚至会牵连其他的应用。</p>
+<p>　　访问文件系统时至关重要的一点就是在没有获得用户授权的情况下，不要访问任何用户的私人数据。而这一点，往往被大多数应用忽略了。W3C正在为移动开发商开发相关的标准API，但目前该工作尚未完成。</p>
+<ul>
+<li>离线用户</li>
+</ul>
+<p>　<br>用户有可能是离线的或者无法接入移动网络。这在城市可能很少发生，即使是在农村，网络的覆盖也已经逐步普及了。但是短暂的网络连接中断还是时常发生的，你的应用程序应该考虑如何处理这种情景。</p>
+<p>想想用户通常在什么时候，在哪里会使用你的App。如果是一个移动游戏，那么用户很可能在飞机上使用这个App。跟踪地图应用常在偏远且网络覆盖不佳的地方使用。移动旅游向导常在一个国外的网络中访问，往往需要支付漫游和国际网络费用。这时，应用程序最好能够为用户提供离线服务，保证用户在不接入网络的情况下，仍然能享受同等的服务。</p>
+<p>现在支持HTML5的浏览器也能实现脱机访问功能，但对用户来说可能不太明显。随着越来越多的浏览器都开始支持脱机访问，应用需要明确地告诉用户网络连接中断时，他们仍然可以访问移动Web Apps。</p>
+<p>Native Apps常常假设网络连接是可靠的。App通常只考虑了网络状况良好的情景，想当然地认为网络是封闭的，并且网速足够快。移动设备从网络良好的环境突然进入一个网络糟糕的环境并不少见。Native Apps应该在网络状况最差的情况下测试。比如用户启动任务时可能还是全信号覆盖，而在任务结束时可能已经完全没有网络信号了。</p>
+<p>用户在安装Native Apps时，根本不会考虑是在线访问还是离线访问——他们期望的是不管在任何状况下，Native Apps都能正常工作。而这也是开发者的职责。</p>
+<h2 id="什么时候应该选择Web-App"><a href="#什么时候应该选择Web-App" class="headerlink" title="什么时候应该选择Web App"></a>什么时候应该选择Web App</h2><p>只要你的应用程序不满足之前提到的Native App条件之一，那么你就没有必要开发一个Native App，而应该选择开发一个Web App。</p>
+<p>　　Native App有许多优秀的特质，并且具有很大的市场潜力，但是Web Apps是唯一一个经久不衰的移动内容、服务、应用开发平台。</p>
+<p>　　Native App并不能明显地为用户提供更好的服务；它反而会增加项目的成本，减少了应用发布的渠道，增加了App升级的复杂度，削弱了开发者对应用的控制和利润，并且可能会给设备带来麻烦。Native App可以为开发者带来短期的效益，但这是有一定风险的，甚至可能会影响到移动市场的可持久发展。</p>
+<p>　　对于那些有着丰富的移动开发经验的程序员来说，一提到“要开发一个功能丰富的应用”时，可能首先想到的就是Native App。虽然在很多设备上，这一想法仍然适用，但是现在移动Web Apps上也提供了足够丰富的功能接口供开发者调用。这使得Web App不仅可以像Native App一样被设计得功能丰富界面绚丽，而且还能在各个平台上迁移，甚至不用修改一行代码。</p>
+<p>　　现在在移动设备开发中，移动Web Apps的创新进入了前所未有的高潮时期。但更重要的是，这是有史以来第一次，移动设备开发商决定共同制定一个移动Web开发的标准，就像是桌面Web上的标准一样。不仅如此，那些支持移动Web App创新功能的设备或是支持第三方浏览器的移动设备都受到消费者的欢迎。</p>
+<h1 id="Web-App"><a href="#Web-App" class="headerlink" title="Web App"></a>Web App</h1><h2 id="Web-App的受限因素"><a href="#Web-App的受限因素" class="headerlink" title="Web App的受限因素"></a>Web App的受限因素</h2><p>Web App体验中受限于5个因素：网络环境，渲染性能，平台特性，受限于浏览器，系统限制。</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebAppLimits-22c5ec51749b68d26f83fd67334713b9.png" alt=""></p>
+<ol>
+<li>网络环境，渲染性能</li>
+</ol>
+<p>Web APP对网络环境的依赖性较大，因为Web APP中的H5页面，当用户使用时，去服务器请求显示页面。如果此时用户恰巧遇到网速慢，网络不稳定等其他环境时，用户请求页面的效率大打折扣，在用户使 用中会出现不流畅，断断续续的不良感受。同时，H5技术自身渲染性能较弱：对复杂的图形样式，多样的动效，自定义字体等的支持性不强。</p>
+<p>因此，基于网络环境和渲染性能的影响，在设计H5页面时，应注意以下几点：</p>
+<ul>
+<li>简化不重要的动画/动效</li>
+<li>简化复杂的图形文字样式</li>
+<li>减少页面渲染的频率和次数</li>
+</ul>
+<ol>
+<li>受限于浏览器</li>
+</ol>
+<p>通常Web App生存于浏览器里，宿主是浏览器。不同的浏览器自身的属性不尽相同，如：浏览器自带的手势，页面切换方式，链接跳转方式，版本兼容问题等等。</p>
+<p>再如，基于浏览器的Web APP在打开新的模块中的页面时，大多会新开窗口来展现。例如用户在使用购物类APP时，浏览每日精选模块时，每当打开新的商品时，默认新开一个窗口。这 样的优劣势显而易见：优势是能够记录用户浏览过的痕迹，浏览过的商品，以便后续横向对比；劣势是过多的页面容易使用户迷失在页面中。</p>
+<p>因此，Web App基于浏览器的特性，从设计角度应该遵循以下了两点：</p>
+<ul>
+<li><p>少用手势，避免与浏览器手势冲突。</p>
+</li>
+<li><p>减少页面跳转次数，尽量在当前页面显示。</p>
+</li>
+</ul>
+<ol>
+<li>系统限制，平台特性</li>
+</ol>
+<p>由于Html5语言的技术特性，无法调用系统级别的权限。例如，系统级别的弹窗，系统级别的通知，地理信息，通讯录，语音等等。且与系统的兼容性也会存在一些问题。以上限制通常导致APP的拓展性不强，体验相对较差。</p>
+<h2 id="Web-APP的设计要点"><a href="#Web-APP的设计要点" class="headerlink" title="Web APP的设计要点"></a>Web APP的设计要点</h2><p>综述所述，在设计Web APP时，应当遵循以下几点：</p>
+<p>1.简化</p>
+<ul>
+<li>简化不重要的动画/动效</li>
+<li>简化复杂的图形文字样式</li>
+</ul>
+<p>2.少用</p>
+<ul>
+<li>少用手势，避免与浏览器手势冲突</li>
+<li>少用弹窗</li>
+</ul>
+<p>3.减少</p>
+<ul>
+<li>减少页面内容</li>
+<li>减少控件数量</li>
+<li>减少页面跳转次数，尽量在当前页面显示</li>
+</ul>
+<p>4.增强</p>
+<ul>
+<li>增强Loading时的趣味性</li>
+<li>增强页面主次关系</li>
+<li>增强控件复用性</li>
+</ul>
+<h2 id="WebApp的实现技术：WebView组件"><a href="#WebApp的实现技术：WebView组件" class="headerlink" title="WebApp的实现技术：WebView组件"></a>WebApp的实现技术：WebView组件</h2><p>在Android手机中内置了一款高性能webkit内核浏览器，在SDK中封装为一个叫做WebView组件。<br>WebView是Android中用来显示网页内容的一个控件。随着前端技术的不断发展，WebView也被使用得越来越普遍，更有甚者，有的App只有一个WebView控件，所有的内容与事件响应都在服务器端中进行，这在Android TV中比较常见。</p>
+<h2 id="WebAPP的实际应用：H5页面嵌入APP"><a href="#WebAPP的实际应用：H5页面嵌入APP" class="headerlink" title="WebAPP的实际应用：H5页面嵌入APP"></a>WebAPP的实际应用：H5页面嵌入APP</h2><p>H5页面嵌入APP的优势就是够灵活，可以在不让用户更新app的前提下更换页面信息，缺点是没有native页面信息载入快，需要实时的加载并缓存。</p>
+<p>淘宝、京东这类电商APP都是H5页面嵌入的：</p>
+<ol>
+<li><p><a href="https://m.taobao.com/" target="_blank" rel="noopener">https://m.taobao.com/</a></p>
+</li>
+<li><p><a href="https://m.jd.com/" target="_blank" rel="noopener">https://m.jd.com/</a></p>
+</li>
+</ol>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li><a href="https://baike.baidu.com/item/B%2FS%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">https://baike.baidu.com/item/B%2FS%E7%BB%93%E6%9E%84</a></li>
+<li><a href="http://www.docin.com/p-1443536858.html" target="_blank" rel="noopener">http://www.docin.com/p-1443536858.html</a></li>
+<li><a href="https://baike.baidu.com/item/Client%2FServer" target="_blank" rel="noopener">https://baike.baidu.com/item/Client%2FServer</a></li>
+<li><a href="https://baike.baidu.com/item/Native%20App" target="_blank" rel="noopener">https://baike.baidu.com/item/Native%20App</a></li>
+<li><a href="http://www.woshipm.com/pd/123646.html" target="_blank" rel="noopener">http://www.woshipm.com/pd/123646.html</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_gh_f0faed874549_344.jpg" alt="ijiangtao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏支持博主继续写出好作品</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay_340X390_20180217180554.png" alt="ijiangtao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_340X390_20180217180331.png" alt="ijiangtao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ijiangtao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ijiangtao.github.io/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/" title="移动应用开发：Web App模式 、Native App模式及Hyprid App模式">https://ijiangtao.github.io/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="external nofollow" target="_blank">Apache 2.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/desgin/" rel="tag"># desgin</a>
+          
+            <a href="/tags/product/" rel="tag"># product</a>
+          
+            <a href="/tags/app/" rel="tag"># app</a>
+          
+            <a href="/tags/HypridApp/" rel="tag"># HypridApp</a>
+          
+            <a href="/tags/NativeApp/" rel="tag"># NativeApp</a>
+          
+            <a href="/tags/WebApp/" rel="tag"># WebApp</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/18/thinking/work/SomeUsefulWorkAdvice/" rel="next" title="一些有价值的工作建议">
+                <i class="fa fa-chevron-left"></i> 一些有价值的工作建议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="ijiangtao" />
+            
+              <p class="site-author-name" itemprop="name">ijiangtao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijiangtao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ijiangtao@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ijiangtao" title="github" target="_blank">github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ijiangtao.github.io/" title="github pages" target="_blank">github pages</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://stackoverflow.com/users/9375843" title="stackoverflow" target="_blank">stackoverflow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.oschina.net/u/3457980" title="oschina" target="_blank">oschina</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://my.csdn.net/sinat_26342009" title="CSDN" target="_blank">CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/people/li-jiang-tao-1991" title="zhihu" target="_blank">zhihu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/westcall" title="weibo" target="_blank">weibo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.douban.com/people/newsad/" title="douban" target="_blank">douban</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.facebook.com/profile.php?id=100008727287002" title="facebook" target="_blank">facebook</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://twitter.com/ijiangtao" title="twitter" target="_blank">twitter</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.quora.com/profile/Jiangtao-Lee-1" title="quora" target="_blank">quora</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述：混合时代"><span class="nav-number">1.</span> <span class="nav-text">概述：混合时代</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Native-App开发"><span class="nav-number">1.1.</span> <span class="nav-text">Native App开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-App开发"><span class="nav-number">1.2.</span> <span class="nav-text">Web App开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hybrid-App"><span class="nav-number">1.3.</span> <span class="nav-text">Hybrid App</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Native-APP开与Web-APP开发对比"><span class="nav-number">2.</span> <span class="nav-text">Native APP开与Web APP开发对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-APP（嵌入型APP）"><span class="nav-number">2.1.</span> <span class="nav-text">Web APP（嵌入型APP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">2.1.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用"><span class="nav-number">2.1.2.</span> <span class="nav-text">适用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">2.1.3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">2.1.4.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native-App（原生型APP）"><span class="nav-number">2.2.</span> <span class="nav-text">Native App（原生型APP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">适用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">优缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两种模式的选择"><span class="nav-number">3.</span> <span class="nav-text">两种模式的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候应该选择Native-App"><span class="nav-number">3.1.</span> <span class="nav-text">什么时候应该选择Native App</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候应该选择Web-App"><span class="nav-number">3.2.</span> <span class="nav-text">什么时候应该选择Web App</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-App"><span class="nav-number">4.</span> <span class="nav-text">Web App</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-App的受限因素"><span class="nav-number">4.1.</span> <span class="nav-text">Web App的受限因素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-APP的设计要点"><span class="nav-number">4.2.</span> <span class="nav-text">Web APP的设计要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebApp的实现技术：WebView组件"><span class="nav-number">4.3.</span> <span class="nav-text">WebApp的实现技术：WebView组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebAPP的实际应用：H5页面嵌入APP"><span class="nav-number">4.4.</span> <span class="nav-text">WebAPP的实际应用：H5页面嵌入APP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by JingtaoLee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">11.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'ijiangtao',
+            repo: 'ijiangtao.github.io.comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '96410bc128db83030c72d845b783c2991a4ff055',
+            
+                client_id: '8c17ed0e3d3a4eb9c7a9'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1000');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 9734,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

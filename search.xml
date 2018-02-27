@@ -3,6 +3,243 @@
   
     
     <entry>
+      <title><![CDATA[移动应用开发：Web App模式 、Native App模式及Hyprid App模式]]></title>
+      <url>/2018/02/27/design/product/app/WebAppAndNativeAppAndHypridApp/</url>
+      <content type="html"><![CDATA[<h1 id="概述：混合时代"><a href="#概述：混合时代" class="headerlink" title="概述：混合时代"></a>概述：混合时代</h1><p>在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。</p>
+<p>这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务普及，采用HTML5进行Web App开发正在成为一种趋势，用户可以根据应用特点和需求进行选择，亦可选择两者混合模式（Hyprid App）。</p>
+<p>下面分别对<br><strong>Native App</strong>、<strong>Web App</strong>和<strong>Hybrid App</strong> 进行详细介绍，让你对这几种开发模式有深入的了解。</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebApp-HybridApp-NativeApp-907f2ff9d9f3a8c202d3dd210a10c8b3.png" alt=""></p>
+<a id="more"></a>
+<h2 id="Native-App开发"><a href="#Native-App开发" class="headerlink" title="Native App开发"></a>Native App开发</h2><p>Native App开发即我们所称的传统APP开发模式（原生APP开发模式），该开发针对IOS、Android等不同的手机操作系统要采用不同的语言和框架进行开发，该模式通常是由“云服务器数据+APP应用客户端”两部份构成，APP应用所有的UI元素、数据内容、逻辑框架均安装在手机终端上。</p>
+<p>Native App可以类比Client/Server结构(C/S结构)，也就是是大家熟知的客户机和服务器结构。通过C/S结构也可以充分利用两端硬件环境的优势，将任务合理分配到Client端和Server端来实现，降低了系统的通讯开销。
+　　</p>
+<h2 id="Web-App开发"><a href="#Web-App开发" class="headerlink" title="Web App开发"></a>Web App开发</h2><p>Web App开发即是一种框架型APP开发模式（HTML5  APP 框架开发模式），该开发具有跨平台的优势，该模式通常由“HTML5云网站+APP应用客户端”两部份构成，APP应用客户端只需安装应用的框架部份，而应用的数据则是每次打开APP的时候，去云端取数据呈现给手机用户。</p>
+<p>Web App可以类比大家熟知的B/S结构，将系统功能实现的核心部分集中到服务器上，简化了系统的开发、维护和使用。</p>
+<h2 id="Hybrid-App"><a href="#Hybrid-App" class="headerlink" title="Hybrid App"></a>Hybrid App</h2><p>Hybrid App（混合模式移动应用）是指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。</p>
+<p>这就像C/S与B/S结合产生的CB/S模式，将B/S与C/S的优势完美地结合起来，应用系统既能以B/S的方式发布运行，同时又具有C/S方式的极强的可操作性。</p>
+<h1 id="Native-APP开与Web-APP开发对比"><a href="#Native-APP开与Web-APP开发对比" class="headerlink" title="Native APP开与Web APP开发对比"></a>Native APP开与Web APP开发对比</h1><h2 id="Web-APP（嵌入型APP）"><a href="#Web-APP（嵌入型APP）" class="headerlink" title="Web APP（嵌入型APP）"></a>Web APP（嵌入型APP）</h2><blockquote>
+<p>Web App 指采用Html5语言写出的App，不需要下载安装。类似于现在所说的轻应用。生存在浏览器中的应用，基本上可以说是触屏版的网页应用。</p>
+</blockquote>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a><strong>组成</strong></h3><ul>
+<li>（1）html5云网站</li>
+<li>（2）APP客户端
+　　</li>
+</ul>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a><strong>适用</strong></h3><pre><code>电子商务、金融、新闻资讯、企业集团需经常更新内容的APP应用。
+</code></pre><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a><strong>特点</strong></h3><p>　　</p>
+<ul>
+<li><p>每次打开APP，都要通过APP框架向云网站取UI及数据；</p>
+</li>
+<li><p>手机用户无法上网则无法访问APP应用中的数据。
+　　</p>
+</li>
+<li><p>框架型的APP无法调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）</p>
+</li>
+<li><p>框架型APP的访问速度受手机终端上网的限制，每次使用均会消耗一定的手机上网流量；
+　　</p>
+</li>
+<li><p>框架型APP应用的安装包小巧，只包含框架文件，而大量的UI元素、数据内容刚存放在云端；</p>
+</li>
+<li><p>APP用户每次都可以访问到实时的最新的云端数据；　</p>
+</li>
+<li><p>APP用户无须频繁更新APP应用，与云端实现的是实时数据交互；</p>
+</li>
+</ul>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>  根据上面的特点，可以总结如下优缺点：</p>
+<p><strong>优点</strong></p>
+<p>（1）开发成本低，</p>
+<p>（2）更新快，</p>
+<p>（3）更新无需通知用户，不需要手动升级</p>
+<p>（4）能够跨多个平台和终端。</p>
+<p><strong>缺点</strong></p>
+<p>（1）临时性的入口</p>
+<p>（2）无法获取系统级别的通知，提醒，动效等等</p>
+<p>（3）用户留存率低</p>
+<p>（4）设计受限制诸多</p>
+<p>（5）体验较差</p>
+<h2 id="Native-App（原生型APP）"><a href="#Native-App（原生型APP）" class="headerlink" title="Native App（原生型APP）"></a>Native App（原生型APP）</h2><blockquote>
+<p>Native APP 指的是原生程序，一般依托于操作系统，有很强的交互，是一个完整的App，可拓展性强。需要用户下载安装使用。</p>
+</blockquote>
+<h3 id="组成-1"><a href="#组成-1" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>云服务器数据中心</li>
+<li>APP客户端</li>
+</ul>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>每次获取最新的APP功能，需要升级APP应用；
+　　</li>
+<li>原生型APP应用的安装包相对较大，包含UI元素、数据内容、逻辑框架；
+　　</li>
+<li>手机用户无法上网也可访问APP应用中以前下载的数据。
+　　</li>
+<li>原生型的APP可以调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）
+　　</li>
+<li>APP应用更新新功能，涉及到每次要向各个应用商店进行提交审核。</li>
+</ul>
+<h3 id="适用-1"><a href="#适用-1" class="headerlink" title="适用"></a>适用</h3><pre><code>游戏、电子杂志、管理应用、物联网等无需经常更新程序框架的APP应用。
+</code></pre><h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>优点</strong></p>
+<p>（1）打造完美的用户体验</p>
+<p>（2）性能稳定</p>
+<p>（3）操作速度快，上手流畅</p>
+<p>（4）访问本地资源（通讯录，相册）</p>
+<p>（5）设计出色的动效，转场，</p>
+<p>（6）拥有系统级别的贴心通知或提醒</p>
+<p>（7）用户留存率高</p>
+<p><strong>缺点</strong></p>
+<p>（1）分发成本高（不同平台有不同的开发语言和界面适配）</p>
+<p>（2）维护成本高（例如一款App已更新至V5版本，但仍有用户在使用V2， V3， V4版本，需要更多的开发人员维护之前的版本）</p>
+<p>（3）更新缓慢，根据不同平台，提交–审核–上线 等等不同的流程，需要经过的流程较复杂</p>
+<p>到底该如何选择Web App和Native App开发模式</p>
+<p>　　移动Web无所不在，移动Web是目前唯一的支持各种设备访问的平台，与桌面Web一样，移动Web支持各种标准的协议。移动Web也是唯一一个可供开发者发布移动应用的平台，它将各种移动交互与桌面任务有效地连接了起来；而开发Native App可以充分利用设备的特性，而这一点往往是Web浏览器做不到的，所以对一个产品本身而言，Native App是最佳的选择。</p>
+<h1 id="两种模式的选择"><a href="#两种模式的选择" class="headerlink" title="两种模式的选择"></a>两种模式的选择</h1><h2 id="什么时候应该选择Native-App"><a href="#什么时候应该选择Native-App" class="headerlink" title="什么时候应该选择Native App"></a>什么时候应该选择Native App</h2><ul>
+<li>为应用收费</li>
+</ul>
+<p>　　没有任何地方规定开发者不能对一个移动Web App收取使用费，但是由于某些原因，人们常常认为不能或是不应该对一个Web App收取费用。由于历史原因，导致移动设备上付费服务遭遇两大阻力：</p>
+<ul>
+<li>开发游戏
+　</li>
+</ul>
+<p>　如果你是想开发一个移动游戏（移动游戏是移动市场上最大的一块），那么你需要开发一个Native App。游戏对资源的占用很大，并且需要使用许多设备API或平台API。虽然，现在有几款完全使用Web技术开发的游戏占有了一定的市场份额，但是和Native App市场的占有情况相比，还是微不足道的。游戏用户对应用的视觉和操作效果要求很高。移动Web虽然提供了一些仿真体验，但还远远不能满足用户的需求。</p>
+<p>　　在开发移动游戏时，你需要慎重考虑你的应用需要支持哪些平台。幸运的是，现在有许多工具能够帮助你将你的游戏推向多个平台，但是完成这些工作，还是需要花费大量的人力和物力。</p>
+<ul>
+<li>使用定位功能</li>
+</ul>
+<p>　　下一个功能就是定位功能，可以通过GPS或者是信号检测确定用户当前的位置信息。以前只能通过Native App的APIs查看用户的位置信息，但现在大多数主流移动浏览器上都嵌入了W3C Geolocation API。像iPhone或Android这样安装了WebKit的设备，或是配置了Opera或Mozilla浏览器的设备，都可以获取用户的位置信息。</p>
+<p>　　<br>　　我相信定位功能会为Web技术带来许多全新的应用。如果能够合理利用Web浏览器，Web开发商就能使用用户的位置信息和其他内容开发出更加有趣的应用。虽然这在技术上没有太大的困难，但却受到隐私保护条例的限制。我们将Web浏览器当做是用户进入World Wide Web的入口。加入定位功能，意味着在网站中引入了一些敏感信息，这有可能导致严重的后果。但是位置感知应用中显示的位置信息必须经过用户的授权，用户当然有权禁止应用发布自己的位置信息。</p>
+<ul>
+<li>使用摄像头</li>
+</ul>
+<p>摄像头可以为你的应用提供丰富的可能性。以往移动MMS（Multimedia Messaging Service）被用于处理移动照片。换言之，你拍了一张照片后，需要使用MMS将它传送给一个服务器，服务器对照片做出相应的处理，并将处理完成的结果通知给你。这个过程是非常耗时的，而且相当复杂，也没有可靠性保障。</p>
+<p>通过访问摄像头，Native App开发者能够简化拍照的过程。用户可以直接在客户端对照片做一些简单的处理，只有在有需要的时候才将照片上传给服务器，而且是通过可靠的HTTP传输。W3C正在开发一个访问摄像头的API，但现在还没有将这部分工作正式整合到浏览器中。
+　　</p>
+<p>在许多类型的移动Apps中，摄像头是非常有用的，比如快拍应用、短片拍摄应用等等，摄像头可以用来捕捉许多重要的瞬间。不久的将来，我们可以看到——只要通过摄像头拍摄某个标识，应用程序就能自动完成对标识上的语言转换工作——这个技术在日本已经开始流行起来了。</p>
+<ul>
+<li>使用感应器
+　</li>
+</ul>
+<p>现在越来越来越多的移动设备上都新增了感应器功能，该装置可以感知设备的物理速度以及重力，并将感知的数据结果传送给设备。这个装置常被用来感应设置是否被翻转，应用根据接受到的信息自动调节画面的方向。</p>
+<p>感应器可以用来帮助用户提升与设备交互时的真实感；大多数移动设备都是手持的，应用能够根据设备的方向调整内容画面，比如翻转屏幕，或是检测物理移动，并能据此猜测用户所处的环境。举一个简单的例子：比如用户正在走路，那么感应器能够检测到一个轻缓的移动或是速度，这时可以为用户提供一个大字体的用户界面，从而使得用户更容易看清屏幕上的内容。</p>
+<p>　<br>然而，开发者也不能过分依赖感应器，因为感应器无法区分究竟哪些交互是有意的，而哪些是没有意义的。每个移动交互都需要通过“传输测试”。设计你的交互时必须考虑用户在一个拥挤的汽车或是火车上的场景。考虑一下如果用户正身处拥挤的地铁或是正在驾车时，你的应用能否正确处理用户摇晃移动设备的动作。通常，大多数开发者都没有考虑这些因素。确保为每个任务设计一个备用方案以处理特殊场景中的移动交互。</p>
+<ul>
+<li>访问文件系统
+　　</li>
+</ul>
+<p>如果你的应用需要将数据保存在本地，那么你需要开发一个Native App。比如你要保存用户的地址簿、电话或E-mail信息，或是保存从其他设备上获取的数据。</p>
+<p>　　访问文件系统常常会涉及到安全和用户隐私保护的问题。恶意应用程序可能会修改或是删除你的移动设备上的数据。一个携带病毒的应用程序可以利用移动设备上的关系网将病毒扩散到许多其他的手机上，在采用移动应用认证机制以前，这种事情是常常发生的。</p>
+<p>　　另一方面，移动设备正变得越来越私人化，移动设备上保存了大量用户的个人信息，以及用户的朋友信息和商业信息。针对这些私人信息开发应用是一个不错的想法。但是这也存在一定的风险，使用保存在移动设备上的数据可以为用户提供更加有针对性的服务。</p>
+<p>　　开发者必须谨记，只有在获得用户的授权后才能访问用户的私人数据。我们看到许多应用在没有得到用户授权的情况下使用了大量的用户私人数据，而被误认为是垃圾信息或是钓鱼应用，即使这些应用原本是在提供一些非常有用的服务。人们对你的应用的误解将会影响到你的服务的推广，如果运营商收到过多关于你的应用的投诉，那么你的服务可能将被终止，甚至会牵连其他的应用。</p>
+<p>　　访问文件系统时至关重要的一点就是在没有获得用户授权的情况下，不要访问任何用户的私人数据。而这一点，往往被大多数应用忽略了。W3C正在为移动开发商开发相关的标准API，但目前该工作尚未完成。</p>
+<ul>
+<li>离线用户</li>
+</ul>
+<p>　<br>用户有可能是离线的或者无法接入移动网络。这在城市可能很少发生，即使是在农村，网络的覆盖也已经逐步普及了。但是短暂的网络连接中断还是时常发生的，你的应用程序应该考虑如何处理这种情景。</p>
+<p>想想用户通常在什么时候，在哪里会使用你的App。如果是一个移动游戏，那么用户很可能在飞机上使用这个App。跟踪地图应用常在偏远且网络覆盖不佳的地方使用。移动旅游向导常在一个国外的网络中访问，往往需要支付漫游和国际网络费用。这时，应用程序最好能够为用户提供离线服务，保证用户在不接入网络的情况下，仍然能享受同等的服务。</p>
+<p>现在支持HTML5的浏览器也能实现脱机访问功能，但对用户来说可能不太明显。随着越来越多的浏览器都开始支持脱机访问，应用需要明确地告诉用户网络连接中断时，他们仍然可以访问移动Web Apps。</p>
+<p>Native Apps常常假设网络连接是可靠的。App通常只考虑了网络状况良好的情景，想当然地认为网络是封闭的，并且网速足够快。移动设备从网络良好的环境突然进入一个网络糟糕的环境并不少见。Native Apps应该在网络状况最差的情况下测试。比如用户启动任务时可能还是全信号覆盖，而在任务结束时可能已经完全没有网络信号了。</p>
+<p>用户在安装Native Apps时，根本不会考虑是在线访问还是离线访问——他们期望的是不管在任何状况下，Native Apps都能正常工作。而这也是开发者的职责。</p>
+<h2 id="什么时候应该选择Web-App"><a href="#什么时候应该选择Web-App" class="headerlink" title="什么时候应该选择Web App"></a>什么时候应该选择Web App</h2><p>只要你的应用程序不满足之前提到的Native App条件之一，那么你就没有必要开发一个Native App，而应该选择开发一个Web App。</p>
+<p>　　Native App有许多优秀的特质，并且具有很大的市场潜力，但是Web Apps是唯一一个经久不衰的移动内容、服务、应用开发平台。</p>
+<p>　　Native App并不能明显地为用户提供更好的服务；它反而会增加项目的成本，减少了应用发布的渠道，增加了App升级的复杂度，削弱了开发者对应用的控制和利润，并且可能会给设备带来麻烦。Native App可以为开发者带来短期的效益，但这是有一定风险的，甚至可能会影响到移动市场的可持久发展。</p>
+<p>　　对于那些有着丰富的移动开发经验的程序员来说，一提到“要开发一个功能丰富的应用”时，可能首先想到的就是Native App。虽然在很多设备上，这一想法仍然适用，但是现在移动Web Apps上也提供了足够丰富的功能接口供开发者调用。这使得Web App不仅可以像Native App一样被设计得功能丰富界面绚丽，而且还能在各个平台上迁移，甚至不用修改一行代码。</p>
+<p>　　现在在移动设备开发中，移动Web Apps的创新进入了前所未有的高潮时期。但更重要的是，这是有史以来第一次，移动设备开发商决定共同制定一个移动Web开发的标准，就像是桌面Web上的标准一样。不仅如此，那些支持移动Web App创新功能的设备或是支持第三方浏览器的移动设备都受到消费者的欢迎。</p>
+<h1 id="Web-App"><a href="#Web-App" class="headerlink" title="Web App"></a>Web App</h1><h2 id="Web-App的受限因素"><a href="#Web-App的受限因素" class="headerlink" title="Web App的受限因素"></a>Web App的受限因素</h2><p>Web App体验中受限于5个因素：网络环境，渲染性能，平台特性，受限于浏览器，系统限制。</p>
+<p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebAppLimits-22c5ec51749b68d26f83fd67334713b9.png" alt=""></p>
+<ol>
+<li>网络环境，渲染性能</li>
+</ol>
+<p>Web APP对网络环境的依赖性较大，因为Web APP中的H5页面，当用户使用时，去服务器请求显示页面。如果此时用户恰巧遇到网速慢，网络不稳定等其他环境时，用户请求页面的效率大打折扣，在用户使 用中会出现不流畅，断断续续的不良感受。同时，H5技术自身渲染性能较弱：对复杂的图形样式，多样的动效，自定义字体等的支持性不强。</p>
+<p>因此，基于网络环境和渲染性能的影响，在设计H5页面时，应注意以下几点：</p>
+<ul>
+<li>简化不重要的动画/动效</li>
+<li>简化复杂的图形文字样式</li>
+<li>减少页面渲染的频率和次数</li>
+</ul>
+<ol>
+<li>受限于浏览器</li>
+</ol>
+<p>通常Web App生存于浏览器里，宿主是浏览器。不同的浏览器自身的属性不尽相同，如：浏览器自带的手势，页面切换方式，链接跳转方式，版本兼容问题等等。</p>
+<p>再如，基于浏览器的Web APP在打开新的模块中的页面时，大多会新开窗口来展现。例如用户在使用购物类APP时，浏览每日精选模块时，每当打开新的商品时，默认新开一个窗口。这 样的优劣势显而易见：优势是能够记录用户浏览过的痕迹，浏览过的商品，以便后续横向对比；劣势是过多的页面容易使用户迷失在页面中。</p>
+<p>因此，Web App基于浏览器的特性，从设计角度应该遵循以下了两点：</p>
+<ul>
+<li><p>少用手势，避免与浏览器手势冲突。</p>
+</li>
+<li><p>减少页面跳转次数，尽量在当前页面显示。</p>
+</li>
+</ul>
+<ol>
+<li>系统限制，平台特性</li>
+</ol>
+<p>由于Html5语言的技术特性，无法调用系统级别的权限。例如，系统级别的弹窗，系统级别的通知，地理信息，通讯录，语音等等。且与系统的兼容性也会存在一些问题。以上限制通常导致APP的拓展性不强，体验相对较差。</p>
+<h2 id="Web-APP的设计要点"><a href="#Web-APP的设计要点" class="headerlink" title="Web APP的设计要点"></a>Web APP的设计要点</h2><p>综述所述，在设计Web APP时，应当遵循以下几点：</p>
+<p>1.简化</p>
+<ul>
+<li>简化不重要的动画/动效</li>
+<li>简化复杂的图形文字样式</li>
+</ul>
+<p>2.少用</p>
+<ul>
+<li>少用手势，避免与浏览器手势冲突</li>
+<li>少用弹窗</li>
+</ul>
+<p>3.减少</p>
+<ul>
+<li>减少页面内容</li>
+<li>减少控件数量</li>
+<li>减少页面跳转次数，尽量在当前页面显示</li>
+</ul>
+<p>4.增强</p>
+<ul>
+<li>增强Loading时的趣味性</li>
+<li>增强页面主次关系</li>
+<li>增强控件复用性</li>
+</ul>
+<h2 id="WebApp的实现技术：WebView组件"><a href="#WebApp的实现技术：WebView组件" class="headerlink" title="WebApp的实现技术：WebView组件"></a>WebApp的实现技术：WebView组件</h2><p>在Android手机中内置了一款高性能webkit内核浏览器，在SDK中封装为一个叫做WebView组件。<br>WebView是Android中用来显示网页内容的一个控件。随着前端技术的不断发展，WebView也被使用得越来越普遍，更有甚者，有的App只有一个WebView控件，所有的内容与事件响应都在服务器端中进行，这在Android TV中比较常见。</p>
+<h2 id="WebAPP的实际应用：H5页面嵌入APP"><a href="#WebAPP的实际应用：H5页面嵌入APP" class="headerlink" title="WebAPP的实际应用：H5页面嵌入APP"></a>WebAPP的实际应用：H5页面嵌入APP</h2><p>H5页面嵌入APP的优势就是够灵活，可以在不让用户更新app的前提下更换页面信息，缺点是没有native页面信息载入快，需要实时的加载并缓存。</p>
+<p>淘宝、京东这类电商APP都是H5页面嵌入的：</p>
+<ol>
+<li><p><a href="https://m.taobao.com/" target="_blank" rel="noopener">https://m.taobao.com/</a></p>
+</li>
+<li><p><a href="https://m.jd.com/" target="_blank" rel="noopener">https://m.jd.com/</a></p>
+</li>
+</ol>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li><a href="https://baike.baidu.com/item/B%2FS%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">https://baike.baidu.com/item/B%2FS%E7%BB%93%E6%9E%84</a></li>
+<li><a href="http://www.docin.com/p-1443536858.html" target="_blank" rel="noopener">http://www.docin.com/p-1443536858.html</a></li>
+<li><a href="https://baike.baidu.com/item/Client%2FServer" target="_blank" rel="noopener">https://baike.baidu.com/item/Client%2FServer</a></li>
+<li><a href="https://baike.baidu.com/item/Native%20App" target="_blank" rel="noopener">https://baike.baidu.com/item/Native%20App</a></li>
+<li><a href="http://www.woshipm.com/pd/123646.html" target="_blank" rel="noopener">http://www.woshipm.com/pd/123646.html</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> design </category>
+            
+            <category> product </category>
+            
+            <category> app </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> desgin </tag>
+            
+            <tag> product </tag>
+            
+            <tag> app </tag>
+            
+            <tag> HypridApp </tag>
+            
+            <tag> NativeApp </tag>
+            
+            <tag> WebApp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[一些有价值的工作建议]]></title>
       <url>/2018/02/18/thinking/work/SomeUsefulWorkAdvice/</url>
       <content type="html"><![CDATA[<p>狗年春节已经过去一半了，我们马上要投入新的一年的工作了，在此之前，我想分享给你一些我认为有价值的工作建议，希望对你有所帮助。</p>
