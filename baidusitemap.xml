@@ -4,8 +4,47 @@
 
     
   <url>
+    <loc>https://ijiangtao.github.io/2018/03/10/java/maven/dependency/MavenDependencyMechanism/</loc>
+    <lastmod>2018-03-10T04:37:14.375Z</lastmod>
+    <data>
+        <display>
+        <title>Maven依赖管理：控制依赖的传递</title>
+        <pubTime>2018-03-10T04:21:17.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>java</tag>
+         
+        <tag>maven</tag>
+         
+        <tag>dependency</tag>
+         
+        <tag>依赖</tag>
+         
+        <tag>依赖传递</tag>
+         
+        <tag>依赖控制</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="java" url="https://ijiangtao.github.io/categories/tech/java/"/>
+          
+             
+              <breadCrumb title="maven" url="https://ijiangtao.github.io/categories/tech/java/maven/"/>
+          
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ijiangtao.github.io/2018/02/27/design/product/app/WebApp/</loc>
-    <lastmod>2018-02-28T03:35:45.773Z</lastmod>
+    <lastmod>2018-02-28T03:36:57.985Z</lastmod>
     <data>
         <display>
         <title>移动应用开发：Web App模式 、Native App模式及Hyprid App模式</title>

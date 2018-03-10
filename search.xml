@@ -3,11 +3,166 @@
   
     
     <entry>
+      <title><![CDATA[Maven依赖管理：控制依赖的传递]]></title>
+      <url>/2018/03/10/java/maven/dependency/MavenDependencyMechanism/</url>
+      <content type="html"><![CDATA[<p>本文档从实际工作中的一个bug出发，讲解了业务的背景、分析了问题产生的原因、介绍了解决问题的思路，同时介绍了Maven的依赖机制。</p>
+<a id="more"></a>
+<h1 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h1><p>最近在工作中，使用Dubbo调用远程服务，需要依赖被调用方(dubbo service provider)提供的一些jar包。</p>
+<p>下面是maven和dubbo的相关配置。</p>
+<ul>
+<li><p>pom.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 远程dubbo服务 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.dubbo.service.provider&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;foo-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dubbo-serivce-provider.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;fooService&quot; interface=&quot;com.dubbo.service.provider.fooService&quot; check=&quot;false&quot; url=&quot;$&#123;dubbo.foo.server.address&#125;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h1><p>项目启动后，出现如下异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoSuchMethodError: com.google.common.base.Platform.systemNanoTime()</span><br></pre></td></tr></table></figure>
+<p>  <img src="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/maven/dependency/NoSuchMethodError.png" alt="image"></p>
+<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>通过Eclipse查看依赖树发现，foo-api所依赖的jar与项目中的jar发生了冲突。</p>
+<p>  <img src="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/maven/dependency/maven-dependency-1.jpg" alt="image"></p>
+<p>可以将如上场景抽象为下面的逻辑：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A依赖</span><br><span class="line">    -&gt; B</span><br><span class="line"></span><br><span class="line">D依赖</span><br><span class="line">    -&gt; A</span><br><span class="line">    -&gt; B</span><br></pre></td></tr></table></figure>
+<p>  因为Maven拥有传递依赖的特性，因此真实的依赖树是：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A依赖</span><br><span class="line">    -&gt; B</span><br><span class="line"></span><br><span class="line">D依赖</span><br><span class="line">    -&gt; A</span><br><span class="line">        -&gt; B</span><br><span class="line">    -&gt; B</span><br></pre></td></tr></table></figure>
+<p>因此D项目发生了依赖冲突。</p>
+<h1 id="相关知识：依赖传递-Transitive-Dependencies"><a href="#相关知识：依赖传递-Transitive-Dependencies" class="headerlink" title="相关知识：依赖传递(Transitive Dependencies)"></a>相关知识：依赖传递(Transitive Dependencies)</h1><p>依赖传递(Transitive Dependencies)是Maven 2.0开始的提供的特性，依赖传递的好处是不言而喻的，可以让我们不需要去寻找和发现所必须依赖的库，而是将会自动将需要依赖的库帮我们加进来。</p>
+<p>例如A依赖了B，B依赖了C和D，那么你就可以在A中，像主动依赖了C和D一样使用它们。并且传递的依赖是没有数量和层级的限制的，非常方便。</p>
+<p>但依赖传递也不可避免的会带来一些问题，例如：</p>
+<ul>
+<li>当依赖层级很深的时候，可能造成循环依赖(cyclic dependency)</li>
+<li>当依赖的数量很多的时候，依赖树会非常大</li>
+</ul>
+<p>针对这些问题，Maven提供了很多管理依赖的特性：</p>
+<h2 id="依赖调节-Dependency-mediation"><a href="#依赖调节-Dependency-mediation" class="headerlink" title="依赖调节(Dependency mediation)"></a>依赖调节(Dependency mediation)</h2><p>  依赖调节是为了解决版本不一致的问题(multiple versions),并采取就近原则(nearest definition)。</p>
+<p>  举例来说，A项目通过依赖传递依赖了两个版本的D：</p>
+<p>  A -&gt; B -&gt; C -&gt; ( D 2.0) ,  A -&gt; E -&gt; (D 1.0),</p>
+<p>  那么最终A依赖的D的version将会是1.0，因为1.0对应的层级更少，也就是更近。</p>
+<h2 id="依赖管理-Dependency-management"><a href="#依赖管理-Dependency-management" class="headerlink" title="依赖管理(Dependency management)"></a>依赖管理(Dependency management)</h2><p>  通过声明Dependency management，可以大大简化子POM的依赖声明。</p>
+<p>  举例来说项目A,B,C,D都有共同的Parent，并有类似的依赖声明如下：</p>
+<ul>
+<li><p>A、B、C、D/pom.xml</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;artifact-a&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;group-c&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;excluded-artifact&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;artifact-b&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">      &lt;type&gt;bar&lt;/type&gt;</span><br><span class="line">      &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">  &lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>  如果父pom声明了如下的Dependency management:</p>
+</li>
+<li><p>Parent/pom.xml</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">   &lt;dependencies&gt;</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;artifact-a&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">       &lt;exclusions&gt;</span><br><span class="line">         &lt;exclusion&gt;</span><br><span class="line">           &lt;groupId&gt;group-c&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;excluded-artifact&lt;/artifactId&gt;</span><br><span class="line">         &lt;/exclusion&gt;</span><br><span class="line">       &lt;/exclusions&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;group-c&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;artifact-b&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">       &lt;type&gt;war&lt;/type&gt;</span><br><span class="line">       &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">     &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;artifact-b&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">       &lt;type&gt;bar&lt;/type&gt;</span><br><span class="line">       &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">     &lt;/dependency&gt;</span><br><span class="line">   &lt;/dependencies&gt;</span><br><span class="line"> &lt;/dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
+<p> 那么子项目的依赖声明会非常简单：</p>
+</li>
+<li><p>A、B、C、D/pom.xml</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;artifact-a&lt;/artifactId&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;group-a&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;artifact-b&lt;/artifactId&gt;</span><br><span class="line">    &lt;!-- 依赖的类型，对应于项目坐标定义的packaging。大部分情况下，该元素不必声明，其默认值是jar.--&gt;</span><br><span class="line">    &lt;type&gt;bar&lt;/type&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="依赖范围-Dependency-scope"><a href="#依赖范围-Dependency-scope" class="headerlink" title="依赖范围(Dependency scope)"></a>依赖范围(Dependency scope)</h2><p>Maven在编译主代码的时候需要使用一套classpath，在编译和执行测试的时候会使用另一套classpath,实际运行项目的时候，又会使用一套classpath。</p>
+<p> 依赖范围就是用来控制依赖与这三种classpath(编译classpath、测试classpath、运行classpath)的关系的，Maven有以下几种依赖范围：</p>
+<ul>
+<li>compile: 编译依赖范围。</li>
+</ul>
+<p>如果没有指定，就会默认使用该依赖范围。</p>
+<p>使用此依赖范围的Maven依赖，对于编译、测试、运行三种classpath都有效。</p>
+<ul>
+<li><p>test: 测试依赖范围。</p>
+<p>使用此依赖范围的Maven依赖，只对于测试classpath有效，在编译主代码或者运行项目的使用时将无法使用此类依赖。</p>
+<p>典型例子是JUnit，它只有在编译测试代码及运行测试的时候才需要。</p>
+</li>
+</ul>
+<ul>
+<li>provided: 已提供依赖范围。</li>
+</ul>
+<p>使用此依赖范围的Maven依赖，对于编译和测试classpath有效，但在运行时无效。</p>
+<p>典型例子是servlet-api，编译和测试项目的时候需要该依赖，但在运行项目的时候，由于容器已经提供，就不需要Maven重复地引入一遍。</p>
+<ul>
+<li>runtime: 运行时依赖范围。</li>
+</ul>
+<p>使用此依赖范围的Maven依赖，对于测试和运行classpath有效，但在编译主代码时无效。</p>
+<p>典型例子是JDBC驱动实现，项目主代码的编译只需要JDK提供的JDBC接口，只有在执行测试或者运行项目的时候才需要实现上述接口的具体JDBC驱动。</p>
+<ul>
+<li>system: 系统依赖范围。</li>
+</ul>
+<p>该依赖与三种classpath的关系，和provided依赖范围完全一致。但使用system范围依赖时必须通过systemPath元素显式地指定依赖文件的路径。由于此类依赖不是通过Maven仓库解析的，而且往往与本机系统绑定，可能造成构建的不可移植，因此应该谨慎使用。</p>
+<p>systemPath元素可以引用环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.system&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;foo&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">    &lt;systemPath&gt;$&#123;maven.home&#125;/lib/foo.jar&lt;/systemPath&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>import(Maven 2.0.9及以上): 导入依赖范围。</p>
+<p>我们知道，maven的继承和java是一样的，只能单继承。因此，父pom可能非常庞大，如果你想把依赖分类清晰的进行管理，就更不可能了。</p>
+<p>import scope依赖能解决这个问题。你可以把Dependency Management放到单独用来管理依赖的pom中，然后在需要使用依赖的模块中通过import scope依赖，就可以引入dependencyManagement。</p>
+<p>例如，父pom.xml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;project&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">    &lt;groupId&gt;com.test.sample&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;base-parent1&lt;/artifactId&gt;</span><br><span class="line">    &lt;packaging&gt;pom&lt;/packaging&gt;</span><br><span class="line">    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;dependencyManagement&gt;</span><br><span class="line">        &lt;dependencies&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactid&gt;junit&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;4.8.2&lt;/version&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactid&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;1.2.16&lt;/version&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">        &lt;/dependencies&gt;</span><br><span class="line">    &lt;/dependencyManagement&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<p>通过非继承的方式来引入这段依赖管理配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.test.sample&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactid&gt;base-parent1&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">            &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">            &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactid&gt;junit&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactid&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：import scope只能用在dependencyManagement里面</p>
+</li>
+</ul>
+<h2 id="排除依赖-Excluded-dependencies"><a href="#排除依赖-Excluded-dependencies" class="headerlink" title="排除依赖(Excluded dependencies)"></a>排除依赖(Excluded dependencies)</h2><p>  排除不需要从所依赖的项目中传递过来的依赖，好比你买车的时候，主动跟卖车的说明不需要买车附加的保险业务。下面在解决思路中会举例说明。</p>
+<h2 id="可选依赖-Optional-dependencies"><a href="#可选依赖-Optional-dependencies" class="headerlink" title="可选依赖(Optional dependencies)"></a>可选依赖(Optional dependencies)</h2><p>  被依赖的项目主动不把可以传递的依赖传递下去，好比卖车的主动声明自己不会让买车的人买这辆车附加的保险业务。下面在解决思路中会举例说明。</p>
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><p>有了上面的知识背景，考虑使用Maven提供的Optional和Exclusions来控制依赖的传递。</p>
+<p><strong>Optional</strong> 定义后，该依赖只能在本项目中传递，不会传递到引用该项目的父项目中，父项目需要主动引用该依赖才行。</p>
+<ul>
+<li>A/pom.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.bar&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;B&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">    &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>这种情况下，A对B的依赖将不会传递给D.</p>
+<p><strong>Exclusions</strong> 则是主动排除子项目传递过来的依赖。</p>
+<ul>
+<li>D/pom.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.bar&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;A&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;groupId&gt;com.bar&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;B&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>这种情况下，D对A的依赖将不会包含B.</p>
+<p>开始提到的问题就是通过exclusion的方式解决的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Maven的依赖机制(Dependency Mechanism)是Maven最著名的特性，并且是Maven在依赖管理领域中最令人称道的。因此，对Maven的依赖机制有深入的理解，对使用Maven非常必要。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management</a></p>
+<p><a href="http://blog.csdn.net/liutengteng130/article/details/46991829" target="_blank" rel="noopener">http://blog.csdn.net/liutengteng130/article/details/46991829</a></p>
+<p><a href="https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven" target="_blank" rel="noopener">https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven</a></p>
+<p><a href="http://blog.csdn.net/elricboa/article/details/70199727" target="_blank" rel="noopener">http://blog.csdn.net/elricboa/article/details/70199727</a></p>
+<p><a href="https://my.oschina.net/javaroad/blog/1600648" target="_blank" rel="noopener">https://my.oschina.net/javaroad/blog/1600648</a></p>
+<p><a href="https://www.cnblogs.com/lddbupt/p/5544956.html" target="_blank" rel="noopener">https://www.cnblogs.com/lddbupt/p/5544956.html</a></p>
+<p><a href="http://blog.csdn.net/rocklee/article/details/51692054" target="_blank" rel="noopener">http://blog.csdn.net/rocklee/article/details/51692054</a></p>
+<p><a href="http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html</a></p>
+<p><a href="https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje" target="_blank" rel="noopener">https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje</a></p>
+<p><a href="http://blog.csdn.net/isea533/article/details/25300287" target="_blank" rel="noopener">http://blog.csdn.net/isea533/article/details/25300287</a></p>
+<p><a href="http://blog.csdn.net/mn960mn/article/details/50894022" target="_blank" rel="noopener">http://blog.csdn.net/mn960mn/article/details/50894022</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> tech </category>
+            
+            <category> java </category>
+            
+            <category> maven </category>
+            
+            <category> dependency </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> java </tag>
+            
+            <tag> maven </tag>
+            
+            <tag> dependency </tag>
+            
+            <tag> 依赖 </tag>
+            
+            <tag> 依赖传递 </tag>
+            
+            <tag> 依赖控制 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[移动应用开发：Web App模式 、Native App模式及Hyprid App模式]]></title>
       <url>/2018/02/27/design/product/app/WebApp/</url>
       <content type="html"><![CDATA[<h1 id="概述：混合时代"><a href="#概述：混合时代" class="headerlink" title="概述：混合时代"></a>概述：混合时代</h1><p>在PC时代，有C/S模式（又称Client/Server或客户/服务器模式）和B/S模式（又称Browser/Server或浏览器和服务器模式）之争，而在移动应用时代，APP开发模式通常分为Web APP与Native APP原生模式两种。</p>
 <p>这两种模式均各自有自己的优势，到底是采用Native App开发还是采用Web App开发一直是业界争论的焦点，但是随着HTML5的发展及云服务普及，采用HTML5进行Web App开发正在成为一种趋势，用户可以根据应用特点和需求进行选择，亦可选择两者混合模式（Hyprid App）。</p>
-<p>下面分别对<br><strong>Native App</strong>、<strong>Web App</strong>和<strong>Hybrid App</strong> 进行详细介绍，让你对这几种开发模式有深入的了解。</p>
+<p>下面分别对<strong>Native App</strong>、<strong>Web App</strong>和<strong>Hybrid App</strong> 进行详细介绍，让你对这几种开发模式有深入的了解。</p>
 <p><img src="https://raw.githubusercontent.com/ijiangtao/img/master/blog/design/product/app/20180227/WebApp-HybridApp-NativeApp-907f2ff9d9f3a8c202d3dd210a10c8b3.png" alt=""></p>
 <a id="more"></a>
 <h2 id="Native-App开发"><a href="#Native-App开发" class="headerlink" title="Native App开发"></a>Native App开发</h2><p>Native App开发即我们所称的传统APP开发模式（原生APP开发模式），该开发针对IOS、Android等不同的手机操作系统要采用不同的语言和框架进行开发，该模式通常是由“云服务器数据+APP应用客户端”两部份构成，APP应用所有的UI元素、数据内容、逻辑框架均安装在手机终端上。</p>
