@@ -4,8 +4,8 @@
 
     
   <url>
-    <loc>https://ijiangtao.github.io/2018/03/10/java/maven/dependency/MavenDependencyMechanism/</loc>
-    <lastmod>2018-03-10T04:37:14.375Z</lastmod>
+    <loc>https://ijiangtao.github.io/2018/03/10/java/maven/MavenDependencyMechanism/</loc>
+    <lastmod>2018-03-10T04:46:25.829Z</lastmod>
     <data>
         <display>
         <title>Maven依赖管理：控制依赖的传递</title>

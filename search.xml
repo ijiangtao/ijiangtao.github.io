@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Maven依赖管理：控制依赖的传递]]></title>
-      <url>/2018/03/10/java/maven/dependency/MavenDependencyMechanism/</url>
+      <url>/2018/03/10/java/maven/MavenDependencyMechanism/</url>
       <content type="html"><![CDATA[<p>本文档从实际工作中的一个bug出发，讲解了业务的背景、分析了问题产生的原因、介绍了解决问题的思路，同时介绍了Maven的依赖机制。</p>
 <a id="more"></a>
 <h1 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h1><p>最近在工作中，使用Dubbo调用远程服务，需要依赖被调用方(dubbo service provider)提供的一些jar包。</p>
@@ -111,17 +111,19 @@
 <p>这种情况下，D对A的依赖将不会包含B.</p>
 <p>开始提到的问题就是通过exclusion的方式解决的。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Maven的依赖机制(Dependency Mechanism)是Maven最著名的特性，并且是Maven在依赖管理领域中最令人称道的。因此，对Maven的依赖机制有深入的理解，对使用Maven非常必要。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management</a></p>
-<p><a href="http://blog.csdn.net/liutengteng130/article/details/46991829" target="_blank" rel="noopener">http://blog.csdn.net/liutengteng130/article/details/46991829</a></p>
-<p><a href="https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven" target="_blank" rel="noopener">https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven</a></p>
-<p><a href="http://blog.csdn.net/elricboa/article/details/70199727" target="_blank" rel="noopener">http://blog.csdn.net/elricboa/article/details/70199727</a></p>
-<p><a href="https://my.oschina.net/javaroad/blog/1600648" target="_blank" rel="noopener">https://my.oschina.net/javaroad/blog/1600648</a></p>
-<p><a href="https://www.cnblogs.com/lddbupt/p/5544956.html" target="_blank" rel="noopener">https://www.cnblogs.com/lddbupt/p/5544956.html</a></p>
-<p><a href="http://blog.csdn.net/rocklee/article/details/51692054" target="_blank" rel="noopener">http://blog.csdn.net/rocklee/article/details/51692054</a></p>
-<p><a href="http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html</a></p>
-<p><a href="https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje" target="_blank" rel="noopener">https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje</a></p>
-<p><a href="http://blog.csdn.net/isea533/article/details/25300287" target="_blank" rel="noopener">http://blog.csdn.net/isea533/article/details/25300287</a></p>
-<p><a href="http://blog.csdn.net/mn960mn/article/details/50894022" target="_blank" rel="noopener">http://blog.csdn.net/mn960mn/article/details/50894022</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li><a href="http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Management</a></li>
+<li><a href="http://blog.csdn.net/liutengteng130/article/details/46991829" target="_blank" rel="noopener">http://blog.csdn.net/liutengteng130/article/details/46991829</a></li>
+<li><a href="https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven" target="_blank" rel="noopener">https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven</a></li>
+<li><a href="http://blog.csdn.net/elricboa/article/details/70199727" target="_blank" rel="noopener">http://blog.csdn.net/elricboa/article/details/70199727</a></li>
+<li><a href="https://my.oschina.net/javaroad/blog/1600648" target="_blank" rel="noopener">https://my.oschina.net/javaroad/blog/1600648</a></li>
+<li><a href="https://www.cnblogs.com/lddbupt/p/5544956.html" target="_blank" rel="noopener">https://www.cnblogs.com/lddbupt/p/5544956.html</a></li>
+<li><a href="http://blog.csdn.net/rocklee/article/details/51692054" target="_blank" rel="noopener">http://blog.csdn.net/rocklee/article/details/51692054</a></li>
+<li><a href="http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html" target="_blank" rel="noopener">http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html</a></li>
+<li><a href="https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje" target="_blank" rel="noopener">https://stackoverflow.com/questions/29395810/nosuchmethoderror-com-google-common-base-platform-systemnanotime-in-gwt-proje</a></li>
+<li><a href="http://blog.csdn.net/isea533/article/details/25300287" target="_blank" rel="noopener">http://blog.csdn.net/isea533/article/details/25300287</a></li>
+<li><a href="http://blog.csdn.net/mn960mn/article/details/50894022" target="_blank" rel="noopener">http://blog.csdn.net/mn960mn/article/details/50894022</a></li>
+</ol>
 ]]></content>
       
         <categories>
