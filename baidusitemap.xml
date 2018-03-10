@@ -4,6 +4,45 @@
 
     
   <url>
+    <loc>https://ijiangtao.github.io/2018/03/10/java/jsp/jsp-el/</loc>
+    <lastmod>2018-03-10T05:04:22.143Z</lastmod>
+    <data>
+        <display>
+        <title>JSP EL 简介</title>
+        <pubTime>2018-03-10T04:56:40.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>java</tag>
+         
+        <tag>lambda</tag>
+         
+        <tag>jsp</tag>
+         
+        <tag>EL</tag>
+         
+        <tag>Expression Language</tag>
+         
+        <tag>el表达式</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="java" url="https://ijiangtao.github.io/categories/tech/java/"/>
+          
+             
+              <breadCrumb title="jsp" url="https://ijiangtao.github.io/categories/tech/java/jsp/"/>
+          
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ijiangtao.github.io/2018/03/10/java/maven/MavenDependencyMechanism/</loc>
     <lastmod>2018-03-10T04:46:25.829Z</lastmod>
     <data>

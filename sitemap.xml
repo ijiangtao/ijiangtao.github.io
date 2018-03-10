@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ijiangtao.github.io/2018/03/10/java/jsp/jsp-el/</loc>
+    
+    <lastmod>2018-03-10T05:04:22.143Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ijiangtao.github.io/2018/03/10/java/maven/MavenDependencyMechanism/</loc>
     
     <lastmod>2018-03-10T04:46:25.829Z</lastmod>
