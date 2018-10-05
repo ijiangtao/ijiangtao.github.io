@@ -94,7 +94,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/maven/dependency/NoSuchMethodError.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ijiangtao/img/master/job/bz/study/maven/dependency/maven-dependency-1.jpg">
-<meta property="og:updated_time" content="2018-03-10T04:46:25.829Z">
+<meta property="og:updated_time" content="2018-03-10T06:43:55.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven依赖管理：控制依赖的传递">
 <meta name="twitter:description" content="本文档从实际工作中的一个bug出发，讲解了业务的背景、分析了问题产生的原因、介绍了解决问题的思路，同时介绍了Maven的依赖机制。">
@@ -380,7 +380,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-10T12:46:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-10T14:43:55+08:00">
                 2018-03-10
               </time>
             
@@ -478,7 +478,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,293 字
+                  2,303 字
                 </span>
               
 
@@ -524,7 +524,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 远程dubbo服务 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.dubbo.service.provider&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;foo-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>dubbo-serivce-provider.xml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;fooService&quot; interface=&quot;com.dubbo.service.provider.fooService&quot; check=&quot;false&quot; url=&quot;$&#123;dubbo.foo.server.address&#125;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;fooService&quot; interface=&quot;com.dubbo.service.provider.FooService&quot; check=&quot;false&quot; url=&quot;$&#123;dubbo.foo.server.address&#125;&quot;/&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h1><p>项目启动后，出现如下异常</p>
@@ -572,11 +572,10 @@
 <p>如果没有指定，就会默认使用该依赖范围。</p>
 <p>使用此依赖范围的Maven依赖，对于编译、测试、运行三种classpath都有效。</p>
 <ul>
-<li><p>test: 测试依赖范围。</p>
+<li>test: 测试依赖范围。</li>
+</ul>
 <p>使用此依赖范围的Maven依赖，只对于测试classpath有效，在编译主代码或者运行项目的使用时将无法使用此类依赖。</p>
 <p>典型例子是JUnit，它只有在编译测试代码及运行测试的时候才需要。</p>
-</li>
-</ul>
 <ul>
 <li>provided: 已提供依赖范围。</li>
 </ul>
@@ -607,6 +606,7 @@
 <h2 id="排除依赖-Excluded-dependencies"><a href="#排除依赖-Excluded-dependencies" class="headerlink" title="排除依赖(Excluded dependencies)"></a>排除依赖(Excluded dependencies)</h2><p>  排除不需要从所依赖的项目中传递过来的依赖，好比你买车的时候，主动跟卖车的说明不需要买车附加的保险业务。下面在解决思路中会举例说明。</p>
 <h2 id="可选依赖-Optional-dependencies"><a href="#可选依赖-Optional-dependencies" class="headerlink" title="可选依赖(Optional dependencies)"></a>可选依赖(Optional dependencies)</h2><p>  被依赖的项目主动不把可以传递的依赖传递下去，好比卖车的主动声明自己不会让买车的人买这辆车附加的保险业务。下面在解决思路中会举例说明。</p>
 <h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><p>有了上面的知识背景，考虑使用Maven提供的Optional和Exclusions来控制依赖的传递。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">  -&gt; B </span><br><span class="line">D</span><br><span class="line">  -&gt; A</span><br><span class="line">  -&gt; B</span><br></pre></td></tr></table></figure>
 <p><strong>Optional</strong> 定义后，该依赖只能在本项目中传递，不会传递到引用该项目的父项目中，父项目需要主动引用该依赖才行。</p>
 <ul>
 <li>A/pom.xml</li>
@@ -850,7 +850,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -861,7 +861,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -872,7 +872,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1009,7 +1009,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.8k</span>
+    <span title="Site words total count">19.3k</span>
   
 </div>
 

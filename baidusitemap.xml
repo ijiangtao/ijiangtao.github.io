@@ -4,26 +4,220 @@
 
     
   <url>
-    <loc>https://ijiangtao.github.io/2018/03/10/java/jsp/jsp-el/</loc>
-    <lastmod>2018-03-10T05:04:22.143Z</lastmod>
+    <loc>https://ijiangtao.github.io/2018/10/05/tools/IDE/eclipse/EclipseTaskTags/</loc>
+    <lastmod>2018-10-05T14:42:40.407Z</lastmod>
     <data>
         <display>
-        <title>JSP EL 简介</title>
-        <pubTime>2018-03-10T04:56:40.000Z</pubTime>
+        <title>Eclipse的Task Tags</title>
+        <pubTime>2018-10-05T14:00:10.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>tools</tag>
+         
+        <tag>ide</tag>
+         
+        <tag>eclipse</tag>
+         
+        <tag>tasktag</tag>
+         
+         
+           
+             
+              <breadCrumb title="tools" url="https://ijiangtao.github.io/categories/tools/"/>
+          
+             
+              <breadCrumb title="IDE" url="https://ijiangtao.github.io/categories/tools/IDE/"/>
+          
+             
+              <breadCrumb title="eclipse" url="https://ijiangtao.github.io/categories/tools/IDE/eclipse/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/10/05/thinking/tech/concept/OpenAPI/</loc>
+    <lastmod>2018-10-05T14:42:40.404Z</lastmod>
+    <data>
+        <display>
+        <title>技术概念 之 OpenAPI</title>
+        <pubTime>2018-10-05T10:02:05.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>concept</tag>
+         
+        <tag>OpenAPI</tag>
+         
+        <tag>技术概念</tag>
+         
+        <tag>技术名词</tag>
+         
+         
+           
+             
+              <breadCrumb title="thinking" url="https://ijiangtao.github.io/categories/thinking/"/>
+          
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/thinking/tech/"/>
+          
+             
+              <breadCrumb title="concept" url="https://ijiangtao.github.io/categories/thinking/tech/concept/"/>
+          
+             
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/10/05/thinking/reading/skill/FoldingCornersReading/</loc>
+    <lastmod>2018-10-05T14:42:40.402Z</lastmod>
+    <data>
+        <display>
+        <title>阅读方法 之 折角阅读法</title>
+        <pubTime>2018-10-05T12:40:11.000Z</pubTime>
+        
+        <tag>reading</tag>
+         
+        <tag>skill</tag>
+         
+         
+           
+             
+              <breadCrumb title="reading" url="https://ijiangtao.github.io/categories/reading/"/>
+          
+             
+              <breadCrumb title="skill" url="https://ijiangtao.github.io/categories/reading/skill/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/10/05/thinking/life/notion/livingORdying/</loc>
+    <lastmod>2018-10-05T14:42:40.401Z</lastmod>
+    <data>
+        <display>
+        <title>生活感悟 之 Living or Dying</title>
+        <pubTime>2018-10-05T10:02:05.000Z</pubTime>
+        
+        <tag>thinking</tag>
+         
+        <tag>life</tag>
+         
+        <tag>notion</tag>
+         
+        <tag>电影</tag>
+         
+        <tag>肖申克的救赎</tag>
+         
+         
+           
+             
+              <breadCrumb title="thinking" url="https://ijiangtao.github.io/categories/thinking/"/>
+          
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/thinking/tech/"/>
+          
+             
+              <breadCrumb title="concept" url="https://ijiangtao.github.io/categories/thinking/tech/concept/"/>
+          
+             
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/10/05/team/game/WindAndFireWheels/</loc>
+    <lastmod>2018-10-05T14:42:40.399Z</lastmod>
+    <data>
+        <display>
+        <title>团建游戏 之 无敌风火轮</title>
+        <pubTime>2018-10-05T13:00:00.000Z</pubTime>
+        
+        <tag>team</tag>
+         
+        <tag>game</tag>
+         
+        <tag>TeamBuilding</tag>
+         
+         
+           
+             
+              <breadCrumb title="team" url="https://ijiangtao.github.io/categories/team/"/>
+          
+             
+              <breadCrumb title="TeamBuilding" url="https://ijiangtao.github.io/categories/team/TeamBuilding/"/>
+          
+             
+              <breadCrumb title="game" url="https://ijiangtao.github.io/categories/team/TeamBuilding/game/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/10/05/HTML/H5/event/H5VisibilitychangeEvent/</loc>
+    <lastmod>2018-10-05T14:42:40.397Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Event 之 visibilitychange</title>
+        <pubTime>2018-10-05T10:56:25.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>HTML</tag>
+         
+        <tag>HTML5</tag>
+         
+        <tag>Event</tag>
+         
+        <tag>visibilitychange</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="HTML" url="https://ijiangtao.github.io/categories/tech/HTML/"/>
+          
+             
+              <breadCrumb title="Event" url="https://ijiangtao.github.io/categories/tech/HTML/Event/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/03/11/java/encoding/UTF8Bugs/</loc>
+    <lastmod>2018-03-11T05:19:10.642Z</lastmod>
+    <data>
+        <display>
+        <title>字符编码与使用中的问题</title>
+        <pubTime>2018-03-11T05:18:17.000Z</pubTime>
         
         <tag>tech</tag>
          
         <tag>java</tag>
          
-        <tag>lambda</tag>
+        <tag>jse</tag>
          
-        <tag>jsp</tag>
+        <tag>encoding</tag>
          
-        <tag>EL</tag>
+        <tag>编码</tag>
          
-        <tag>Expression Language</tag>
-         
-        <tag>el表达式</tag>
+        <tag>UTF-8</tag>
          
          
            
@@ -34,9 +228,8 @@
               <breadCrumb title="java" url="https://ijiangtao.github.io/categories/tech/java/"/>
           
              
-              <breadCrumb title="jsp" url="https://ijiangtao.github.io/categories/tech/java/jsp/"/>
+              <breadCrumb title="encoding" url="https://ijiangtao.github.io/categories/tech/java/encoding/"/>
           
-             
         </display>
     </data>
     </url>
@@ -44,7 +237,7 @@
     
   <url>
     <loc>https://ijiangtao.github.io/2018/03/10/java/maven/MavenDependencyMechanism/</loc>
-    <lastmod>2018-03-10T04:46:25.829Z</lastmod>
+    <lastmod>2018-03-10T06:43:55.790Z</lastmod>
     <data>
         <display>
         <title>Maven依赖管理：控制依赖的传递</title>
@@ -74,6 +267,45 @@
           
              
               <breadCrumb title="maven" url="https://ijiangtao.github.io/categories/tech/java/maven/"/>
+          
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ijiangtao.github.io/2018/03/10/java/jsp/jsp-el/</loc>
+    <lastmod>2018-03-10T05:04:22.143Z</lastmod>
+    <data>
+        <display>
+        <title>JSP EL 简介</title>
+        <pubTime>2018-03-10T04:56:40.000Z</pubTime>
+        
+        <tag>tech</tag>
+         
+        <tag>java</tag>
+         
+        <tag>jsp</tag>
+         
+        <tag>EL</tag>
+         
+        <tag>lambda</tag>
+         
+        <tag>Expression Language</tag>
+         
+        <tag>el表达式</tag>
+         
+         
+           
+             
+              <breadCrumb title="tech" url="https://ijiangtao.github.io/categories/tech/"/>
+          
+             
+              <breadCrumb title="java" url="https://ijiangtao.github.io/categories/tech/java/"/>
+          
+             
+              <breadCrumb title="jsp" url="https://ijiangtao.github.io/categories/tech/java/jsp/"/>
           
              
         </display>
@@ -116,7 +348,6 @@
     </data>
     </url>
 
-    
     
     
     
@@ -188,9 +419,9 @@
          
         <tag>jse</tag>
          
-        <tag>java8</tag>
-         
         <tag>lambda</tag>
+         
+        <tag>java8</tag>
          
         <tag>MethodReference</tag>
          
@@ -240,27 +471,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>https://ijiangtao.github.io/2018/02/15/bloginfo/Welcome/</loc>
-    <lastmod>2018-02-17T07:20:23.071Z</lastmod>
-    <data>
-        <display>
-        <title>Hello,Welcome to my blog world</title>
-        <pubTime>2018-02-15T10:49:45.000Z</pubTime>
-        
-        <tag>tech</tag>
-         
-        <tag>google</tag>
-         
-        <tag>gtm</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://ijiangtao.github.io/2018/01/15/gtm/GoogleTagManagerIntroduce/</loc>
